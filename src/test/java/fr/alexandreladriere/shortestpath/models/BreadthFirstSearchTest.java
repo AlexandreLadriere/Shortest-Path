@@ -98,6 +98,13 @@ public class BreadthFirstSearchTest {
         int col_s = BreadthFirstSearch.findStartingPoint(matrix)[1];
         assertEquals(expectedStartingPoint[0], row_s);
         assertEquals(expectedStartingPoint[1], col_s);
+    }
+
+    /**
+     * Test the "shortestPathLength" function
+     */
+    @Test
+    public void shortestPathLengthTest() {
         assertEquals(expectedPathLength, BreadthFirstSearch.shortestPathLength(matrix));
     }
 }
