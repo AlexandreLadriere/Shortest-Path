@@ -36,6 +36,11 @@ public final class BreadthFirstSearch {
                 break;
             }
         }
+        // if there is no starting point
+        if (row >= matrix.length || col >= matrix[0].length) {
+            row = 0;
+            col = 0;
+        }
         return new int[]{row, col};
     }
 
