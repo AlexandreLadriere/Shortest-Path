@@ -18,7 +18,7 @@ public final class BreadthFirstSearch {
      * @param matrix The matrix in which you want to find the starting point
      * @return Coordinates of the starting point (i.e.: [row, col])
      */
-    private static int[] findStartingPoint(int[][] matrix) {
+    public static int[] findStartingPoint(int[][] matrix) {
         int row = 0;
         int col = 0;
         boolean startFlag = false;
@@ -35,6 +35,11 @@ public final class BreadthFirstSearch {
             if (startFlag) {
                 break;
             }
+        }
+        // if there is no starting point
+        if (row >= matrix.length || col >= matrix[0].length) {
+            row = 0;
+            col = 0;
         }
         return new int[]{row, col};
     }
