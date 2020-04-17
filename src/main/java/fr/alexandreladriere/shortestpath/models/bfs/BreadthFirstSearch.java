@@ -1,11 +1,8 @@
-package main.java.fr.alexandreladriere.shortestpath.models;
+package main.java.fr.alexandreladriere.shortestpath.models.bfs;
 
 import main.java.fr.alexandreladriere.shortestpath.utils.Constants;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Implement the BFS algorithm (revisited a little bit)
@@ -42,6 +39,66 @@ public final class BreadthFirstSearch {
             col = 0;
         }
         return new int[]{row, col};
+    }
+
+    /**
+     * Check if the given position is a valid one or not
+     *
+     * @param matrix Matrix in which you want to test the validity of the point
+     * @param x      X coordinate
+     * @param y      Y coordinate
+     * @return True if position is valid (i.e.: you can move to this position); False if not valid
+     * // TODO Make a test for this function
+     */
+    public static boolean isValid(int[][] matrix, int x, int y) {
+        boolean isOk = true;
+        if (x < 0 || x > matrix.length || y < 0 || y > matrix[0].length) {
+            isOk = false;
+        }
+        if (matrix[x][y] == Constants.OBSTACLE) {
+            isOk = false;
+        }
+        return isOk;
+    }
+
+    /**
+     * Return the shortest path coordinates in the given matrix
+     *
+     * @param matrix Matrix that you want to test
+     * @return A list of coordinates of the shortest path inside the matrix
+     * // TODO make a test for this function
+     */
+    public static List<int[]> shortestPath(int[][] matrix) {
+        List<int[]> path = new ArrayList<>();
+        return path;
+    }
+
+    /**
+     * Find the shortest path inside the given matrix between the starting point and the ending point
+     *
+     * @param matrix   Matrix inside which you want to find the shortest path
+     * @param startRow X coordinate of the starting point
+     * @param startCol Y coordinate of the starting point
+     * @return Node object of the shortest path
+     * // TODO make a test function
+     */
+    private static Node findPath(int[][] matrix, int startRow, int startCol) {
+        int[] row_moves = {-1, 0, 0, 1};
+        int[] col_moves = {0, -1, 1, 0};
+        // create a queue and add first node/cell
+        Queue<Node> queue = new ArrayDeque<>();
+        Node src = new Node(startRow, startCol, null); // starting node
+        queue.add(src);
+        // Create a set of visited cells
+        Set<String> visited = new HashSet<>();
+
+        String key = src.x + "," + src.y;
+        visited.add(key);
+
+        // Run until the queue is not empty
+        while (!queue.isEmpty()) {
+            // TODO BFS algorithm
+        }
     }
 
     /**

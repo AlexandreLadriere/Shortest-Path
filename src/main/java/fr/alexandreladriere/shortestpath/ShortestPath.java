@@ -1,6 +1,6 @@
 package main.java.fr.alexandreladriere.shortestpath;
 
-import main.java.fr.alexandreladriere.shortestpath.models.BreadthFirstSearch;
+import main.java.fr.alexandreladriere.shortestpath.models.bfs.BreadthFirstSearch;
 
 /**
  * Main class
