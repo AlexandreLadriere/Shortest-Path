@@ -92,12 +92,14 @@ public final class BreadthFirstSearch {
         // Create a set of visited cells
         Set<String> visited = new HashSet<>();
 
-        String key = src.x + "," + src.y;
+        String key = src.getX() + "," + src.getY();
         visited.add(key);
 
         // Run until the queue is not empty
         while (!queue.isEmpty()) {
-            // TODO BFS algorithm
+            Node current = queue.poll();
+            int x = current.getX();
+            int y = current.getY();
         }
     }
 

@@ -4,8 +4,8 @@ package main.java.fr.alexandreladriere.shortestpath.models.bfs;
  * Implement a Node (i.e. a cell in the matrix
  */
 public class Node {
-    int x, y; // coordinates of the node in the matrix
-    Node parent; // Parent of the node
+    private int x, y; // coordinates of the node in the matrix
+    private Node parent; // Parent of the node
 
     /**
      * Default constructor
@@ -44,5 +44,32 @@ public class Node {
                 "x=" + x +
                 ", y=" + y +
                 '}';
+    }
+
+    /**
+     * Get the X coordinate
+     *
+     * @return X coordinate
+     */
+    public int getX() {
+        return x;
+    }
+
+    /**
+     * Get the Y coordinate
+     *
+     * @return Y coordinate
+     */
+    public int getY() {
+        return y;
+    }
+
+    /**
+     * Get the parent Node
+     *
+     * @return Parent Node
+     */
+    public Node getParent() {
+        return parent;
     }
 }
