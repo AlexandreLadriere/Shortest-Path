@@ -53,7 +53,7 @@ public class BreadthFirstSearchTest {
                         {Constants.EMPTY, Constants.EMPTY, Constants.EMPTY, Constants.END}
                 },
                         new int[]{0, 1},
-                        7
+                        8
                 },
                 // 2 starting points
                 {new int[][]{
@@ -63,7 +63,7 @@ public class BreadthFirstSearchTest {
                         {Constants.EMPTY, Constants.EMPTY, Constants.EMPTY, Constants.END}
                 },
                         new int[]{0, 2},
-                        8
+                        9
                 },
                 // No starting point
                 {new int[][]{
@@ -73,7 +73,8 @@ public class BreadthFirstSearchTest {
                         {Constants.EMPTY, Constants.EMPTY, Constants.EMPTY, Constants.END}
                 },
                         new int[]{0, 0},
-                        6},
+                        7
+                },
         });
     }
 
@@ -105,6 +106,6 @@ public class BreadthFirstSearchTest {
      */
     @Test
     public void shortestPathLengthTest() {
-        assertEquals(expectedPathLength, BreadthFirstSearch.shortestPathLength(matrix));
+        assertEquals(expectedPathLength, BreadthFirstSearch.shortestPathLength(matrix, false));
     }
 }
