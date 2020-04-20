@@ -10,8 +10,8 @@ import java.util.*;
  */
 public final class BreadthFirstSearch {
     private static List<int[]> path = new ArrayList<>();
-    private static int[] row_moves = {-1, 0, 0, 1}; // Move without diag
-    private static int[] col_moves = {0, -1, 1, 0}; // Move without diag
+    private static int[] row_moves;
+    private static int[] col_moves;
 
     /**
      * Get the starting point inside a matrix. If there is no starting point, then {0, 0} is considered to be the starting point
@@ -80,6 +80,9 @@ public final class BreadthFirstSearch {
         if (useDiag) {
             row_moves = new int[]{-1, -1, -1, 0, 1, 1, 1, 0}; // allow to move in diag
             col_moves = new int[]{-1, 0, 1, 1, 1, 0, -1, -1}; // allow to move in diag
+        } else {
+            row_moves = new int[]{-1, 1, 0, 0};
+            col_moves = new int[]{0, 0, -1, 1};
         }
         Node node = findPath(matrix, start[0], start[1]);
         if (node != null) {
