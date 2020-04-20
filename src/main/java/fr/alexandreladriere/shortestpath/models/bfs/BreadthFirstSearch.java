@@ -10,11 +10,11 @@ import java.util.*;
  */
 public final class BreadthFirstSearch {
     private static List<int[]> path = new ArrayList<>();
-    private static int[] row_moves = {-1, 0, 0, 1}; // Move without diag
-    private static int[] col_moves = {0, -1, 1, 0}; // Move without diag
+    private static int[] row_moves;
+    private static int[] col_moves;
 
     /**
-     * Get the starting point inside a matrix
+     * Get the starting point inside a matrix. If there is no starting point, then {0, 0} is considered to be the starting point
      *
      * @param matrix The matrix in which you want to find the starting point
      * @return Coordinates of the starting point (i.e.: [row, col])
@@ -52,9 +52,8 @@ public final class BreadthFirstSearch {
      * @param x      X coordinate
      * @param y      Y coordinate
      * @return True if position is valid (i.e.: you can move to this position); False if not valid
-     * // TODO Make a test for this function
      */
-    public static boolean isValid(int[][] matrix, int x, int y) {
+    private static boolean isValid(int[][] matrix, int x, int y) {
         boolean isOk = true;
         if (x < 0 || x >= matrix.length || y < 0 || y >= matrix[0].length) {
             isOk = false;
@@ -72,7 +71,6 @@ public final class BreadthFirstSearch {
      * @param matrix  Matrix that you want to test
      * @param useDiag Boolean to indicate if we can move in diagonal (true: yes; false: no)
      * @return A list of coordinates of the shortest path inside the matrix
-     * // TODO make a test for this function
      */
     public static List<int[]> shortestPath(int[][] matrix, boolean useDiag) {
         path = new ArrayList<>();
@@ -80,8 +78,11 @@ public final class BreadthFirstSearch {
         int row = start[0];
         int col = start[1];
         if (useDiag) {
-            row_moves = new int[]{-1, -1, -1, 1, 1, 0}; // allow to move in diag
-            col_moves = new int[]{1, -1, 0, 1, 0, 0}; // allow to move in diag
+            row_moves = new int[]{-1, -1, -1, 0, 1, 1, 1, 0}; // allow to move in diag
+            col_moves = new int[]{-1, 0, 1, 1, 1, 0, -1, -1}; // allow to move in diag
+        } else {
+            row_moves = new int[]{-1, 1, 0, 0};
+            col_moves = new int[]{0, 0, -1, 1};
         }
         Node node = findPath(matrix, start[0], start[1]);
         if (node != null) {
@@ -112,7 +113,6 @@ public final class BreadthFirstSearch {
      * @param startRow X coordinate of the starting point
      * @param startCol Y coordinate of the starting point
      * @return Node object of the shortest path
-     * // TODO make a test function
      */
     private static Node findPath(int[][] matrix, int startRow, int startCol) {
         // create a queue and add first node/cell
@@ -124,7 +124,6 @@ public final class BreadthFirstSearch {
 
         String key = src.getX() + "," + src.getY();
         visited.add(key);
-
         // Run until the queue is not empty
         while (!queue.isEmpty()) {
             // process front node
