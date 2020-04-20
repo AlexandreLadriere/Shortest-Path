@@ -2,7 +2,6 @@ package test.java.fr.alexandreladriere.shortestpath.models.bfs;
 
 import main.java.fr.alexandreladriere.shortestpath.models.bfs.BreadthFirstSearch;
 import main.java.fr.alexandreladriere.shortestpath.utils.Constants;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
@@ -25,6 +24,7 @@ public class BreadthFirstSearchTest {
     @Rule
     public ErrorCollector collector = new ErrorCollector();
 
+    private int testNumber = 0;
     private int[][] matrix;
     private final int[] expectedStartingPoint;
     private final int expectedPathLength;
@@ -200,11 +200,10 @@ public class BreadthFirstSearchTest {
     /**
      * Test the "shortestPathLength" function
      */
-    @Ignore
     @Test
     public void shortestPathLengthTest() {
-        assertEquals(expectedPathLength, BreadthFirstSearch.shortestPathLength(matrix, false));
-        assertEquals(expectedPathLengthWithDiag, BreadthFirstSearch.shortestPathLength(matrix, true));
+        collector.checkThat(expectedPathLength, equalTo(BreadthFirstSearch.shortestPathLength(matrix, false)));
+        collector.checkThat(expectedPathLengthWithDiag, equalTo(BreadthFirstSearch.shortestPathLength(matrix, true)));
     }
 
     /**
@@ -214,21 +213,19 @@ public class BreadthFirstSearchTest {
     public void shortestPathTest() {
         List<int[]> shortestPath = BreadthFirstSearch.shortestPath(matrix, false);
         List<int[]> shortestPathWithDiag = BreadthFirstSearch.shortestPath(matrix, true);
+        System.out.println("Test n°" + testNumber);
         for (int i = 0; i < shortestPath.size(); i++) {
-            collector.checkThat(expectedPath.get(i)[0], equalTo(shortestPath.get(i)[0]));
-            System.out.println("test");
             System.out.println("expectedPath.get(i)[0]=" + expectedPath.get(i)[0]);
             System.out.println("shortestPath.get(i)[0]=" + shortestPath.get(i)[0]);
             System.out.println("expectedPath.get(i)[1]=" + expectedPath.get(i)[1]);
             System.out.println("shortestPath.get(i)[1]=" + shortestPath.get(i)[1]);
+            collector.checkThat(expectedPath.get(i)[0], equalTo(shortestPath.get(i)[0]));
             collector.checkThat(expectedPath.get(i)[1], equalTo(shortestPath.get(i)[1]));
         }
-        /*
         for (int j = 0; j < shortestPathWithDiag.size(); j++) {
-            assertEquals(expectedPathWithDiag.get(j)[0], shortestPathWithDiag.get(j)[0]);
-            assertEquals(expectedPathWithDiag.get(j)[1], shortestPathWithDiag.get(j)[1]);
+            collector.checkThat(expectedPathWithDiag.get(j)[0], equalTo(shortestPathWithDiag.get(j)[0]));
+            collector.checkThat(expectedPathWithDiag.get(j)[1], equalTo(shortestPathWithDiag.get(j)[1]));
         }
-
-         */
+        testNumber += 1;
     }
 }
