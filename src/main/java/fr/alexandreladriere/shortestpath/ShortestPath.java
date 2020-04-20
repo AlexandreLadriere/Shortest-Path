@@ -25,7 +25,7 @@ public class ShortestPath {
 
          */
         int[][] matrixTest = new int[][]{
-                {Constants.EMPTY, Constants.START, Constants.EMPTY, Constants.EMPTY},
+                {Constants.EMPTY, Constants.EMPTY, Constants.EMPTY, Constants.EMPTY},
                 {Constants.EMPTY, Constants.OBSTACLE, Constants.OBSTACLE, Constants.OBSTACLE},
                 {Constants.EMPTY, Constants.EMPTY, Constants.OBSTACLE, Constants.EMPTY},
                 {Constants.EMPTY, Constants.EMPTY, Constants.EMPTY, Constants.END}

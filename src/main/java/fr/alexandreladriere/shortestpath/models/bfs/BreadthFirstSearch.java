@@ -78,8 +78,8 @@ public final class BreadthFirstSearch {
         int row = start[0];
         int col = start[1];
         if (useDiag) {
-            row_moves = new int[]{-1, -1, -1, 1, 1, 0}; // allow to move in diag
-            col_moves = new int[]{1, -1, 0, 1, 0, 0}; // allow to move in diag
+            row_moves = new int[]{-1, -1, -1, 0, 1, 1, 1, 0}; // allow to move in diag
+            col_moves = new int[]{-1, 0, 1, 1, 1, 0, -1, -1}; // allow to move in diag
         }
         Node node = findPath(matrix, start[0], start[1]);
         if (node != null) {
