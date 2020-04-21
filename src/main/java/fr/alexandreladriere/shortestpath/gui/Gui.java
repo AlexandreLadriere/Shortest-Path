@@ -20,6 +20,8 @@ public class Gui extends JPanel {
     private final Case[][] matrix;
     private List<int[]> path;
     private boolean clicked = false;
+    private boolean hasStartingPoint;
+    private boolean hasEndPoint;
 
     /**
      * Default constructor
@@ -27,6 +29,8 @@ public class Gui extends JPanel {
     public Gui() {
         this.setLayout(new BorderLayout());
         this.controller = new Controller(this);
+        hasEndPoint = false;
+        hasStartingPoint = false;
         // North
         JPanel northPanel = new JPanel();
         startRadio = new JRadioButton("Starting point");
@@ -51,7 +55,7 @@ public class Gui extends JPanel {
         for (int i = 0; i < Constants.DEFAULT_MATRIX_ROW; i++) {
             for (int j = 0; j < Constants.DEFAULT_MATRIX_COL; j++) {
                 matrix[i][j] = new Case(this, i, j, Constants.EMPTY);
-                matrix[i][j].addMouseListener(new MouseController(this));
+                matrix[i][j].addMouseListener(new MouseController(this, i, j));
                 matrixGridPanel.add(matrix[i][j]);
             }
         }
@@ -102,5 +106,77 @@ public class Gui extends JPanel {
      */
     public void setClicked(boolean clicked) {
         this.clicked = clicked;
+    }
+
+    /**
+     * Get the "endRadioButton"
+     *
+     * @return "endRadioButton" radio button
+     */
+    public JRadioButton getEndRadio() {
+        return endRadio;
+    }
+
+    /**
+     * Get the "obstacleRadioButton"
+     *
+     * @return "obstacleRadioButton" radio button
+     */
+    public JRadioButton getObstacleRadio() {
+        return obstacleRadio;
+    }
+
+    /**
+     * Get the "startRadioButton"
+     *
+     * @return "startRadioButton" Radio button
+     */
+    public JRadioButton getStartRadio() {
+        return startRadio;
+    }
+
+    /**
+     * Get the gui matrix
+     *
+     * @return Case matrix
+     */
+    public Case[][] getMatrix() {
+        return matrix;
+    }
+
+    /**
+     * Get the boolean value indicating if the matrix grid has a starting point or not
+     *
+     * @return boolean value indicating if the matrix grid has a starting point or not
+     */
+    public boolean getHasStartingPoint() {
+        return hasStartingPoint;
+    }
+
+    /**
+     * Set the new boolean value to indicate if the grid has a starting point or not
+     *
+     * @param hasStartingPoint New value to indicate if the grid has a starting point (true: yes; false: no)
+     */
+    public void setHasStartingPoint(boolean hasStartingPoint) {
+        this.hasStartingPoint = hasStartingPoint;
+    }
+
+    /**
+     * Get the boolean value indicating if the matrix grid has an end point or not
+     *
+     * @return Boolean value indicating if the matrix grid has an end point or not
+     */
+    public boolean getHasEndPoint() {
+        return hasEndPoint;
+    }
+
+    /**
+     * Set the new boolean value to indicate if the grid has an end point or not
+     *
+     * @param hasEndPoint New value to indicate if the grid has an end point (true: yes; false: no)
+     */
+    public void setHasEndPoint(boolean hasEndPoint) {
+        this.hasEndPoint = hasEndPoint;
     }
 }
