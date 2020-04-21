@@ -10,7 +10,9 @@ import java.util.List;
  * Implement the GUI
  */
 public class Gui extends JPanel {
-    private final JLabel titleLabel;
+    private final JRadioButton startRadio;
+    private final JRadioButton endRadio;
+    private final JRadioButton obstacleRadio;
     private final JButton resetButton;
     private final JButton findPathButton;
     private final Controller controller;
@@ -26,8 +28,21 @@ public class Gui extends JPanel {
         this.setLayout(new BorderLayout());
         this.controller = new Controller(this);
         // North
-        titleLabel = new JLabel("Select a starting point");
-        this.add(titleLabel, BorderLayout.NORTH);
+        JPanel northPanel = new JPanel();
+        startRadio = new JRadioButton("Starting point");
+        startRadio.setSelected(true);
+        endRadio = new JRadioButton("End point");
+        endRadio.setSelected(false);
+        obstacleRadio = new JRadioButton("Obstacles");
+        obstacleRadio.setSelected(false);
+        ButtonGroup bg = new ButtonGroup();
+        bg.add(startRadio);
+        bg.add(endRadio);
+        bg.add(obstacleRadio);
+        northPanel.add(startRadio, BorderLayout.WEST);
+        northPanel.add(endRadio, BorderLayout.CENTER);
+        northPanel.add(obstacleRadio, BorderLayout.EAST);
+        this.add(northPanel, BorderLayout.NORTH);
 
         // Center
         matrixGridPanel = new JPanel();
@@ -44,13 +59,12 @@ public class Gui extends JPanel {
 
         // South
         JPanel southPanel = new JPanel();
-        southPanel.setLayout(new BorderLayout());
         resetButton = new JButton("Reset");
         resetButton.addActionListener(controller);
         findPathButton = new JButton("Find shortest path");
         findPathButton.addActionListener(controller);
-        southPanel.add(findPathButton, BorderLayout.EAST);
-        southPanel.add(resetButton, BorderLayout.WEST);
+        southPanel.add(resetButton);
+        southPanel.add(findPathButton);
         this.add(southPanel, BorderLayout.SOUTH);
     }
 
