@@ -17,6 +17,7 @@ public class Gui extends JPanel {
     private final JPanel matrixGridPanel;
     private final Case[][] matrix;
     private List<int[]> path;
+    private boolean clicked = false;
 
     /**
      * Default constructor
@@ -35,6 +36,7 @@ public class Gui extends JPanel {
         for (int i = 0; i < Constants.DEFAULT_MATRIX_ROW; i++) {
             for (int j = 0; j < Constants.DEFAULT_MATRIX_COL; j++) {
                 matrix[i][j] = new Case(this, i, j, Constants.EMPTY);
+                matrix[i][j].addMouseListener(new MouseController(this));
                 matrixGridPanel.add(matrix[i][j]);
             }
         }
@@ -68,5 +70,23 @@ public class Gui extends JPanel {
      */
     public JButton getResetButton() {
         return resetButton;
+    }
+
+    /**
+     * Get the "clicked" boolean
+     *
+     * @return "Clicked" boolean
+     */
+    public boolean getClicked() {
+        return clicked;
+    }
+
+    /**
+     * Set the "clicked" boolean
+     *
+     * @param clicked New value for "clicked" bool
+     */
+    public void setClicked(boolean clicked) {
+        this.clicked = clicked;
     }
 }
