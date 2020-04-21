@@ -22,10 +22,10 @@ public class Case extends JPanel implements MouseListener {
         this.x = x;
         this.y = y;
         this.value = value;
-        setPreferredSize(new Dimension(Constants.DIM_CASE, Constants.DIM_CASE));
-        addMouseListener(this);
         this.setBackground(new Color(0, 0, 255));
         this.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
+        setPreferredSize(new Dimension(Constants.DIM_CASE, Constants.DIM_CASE));
+        addMouseListener(this);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class Case extends JPanel implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
-
+        System.out.println(this.value);
     }
 
     @Override
@@ -45,7 +45,6 @@ public class Case extends JPanel implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent mouseEvent) {
-
     }
 
     @Override
