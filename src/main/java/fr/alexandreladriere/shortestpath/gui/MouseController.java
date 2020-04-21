@@ -43,7 +43,7 @@ public class MouseController implements MouseListener {
             gui.getMatrix()[x][y].setValue(Constants.END);
             gui.setHasEndPoint(true);
         }
-        if (gui.getObstacleRadio().isSelected()) {
+        if (gui.getObstacleRadio().isSelected() && !gui.getHasPath()) {
             gui.getMatrix()[x][y].setBackgroundColor(Constants.OBSTACLE_COLOR);
             gui.getMatrix()[x][y].setValue(Constants.OBSTACLE);
         }
@@ -57,7 +57,7 @@ public class MouseController implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent mouseEvent) {
-        if (gui.getClicked() && gui.getObstacleRadio().isSelected()) {
+        if (gui.getClicked() && gui.getObstacleRadio().isSelected() && !gui.getHasPath()) {
             gui.getMatrix()[x][y].setBackgroundColor(Constants.OBSTACLE_COLOR);
             gui.getMatrix()[x][y].setValue(Constants.OBSTACLE);
         }

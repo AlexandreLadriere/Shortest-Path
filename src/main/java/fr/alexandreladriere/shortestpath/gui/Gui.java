@@ -18,10 +18,10 @@ public class Gui extends JPanel {
     private final Controller controller;
     private final JPanel matrixGridPanel;
     private final Case[][] matrix;
-    private List<int[]> path;
     private boolean clicked = false;
     private boolean hasStartingPoint;
     private boolean hasEndPoint;
+    private boolean hasPath;
 
     /**
      * Default constructor
@@ -31,6 +31,7 @@ public class Gui extends JPanel {
         this.controller = new Controller(this);
         hasEndPoint = false;
         hasStartingPoint = false;
+        hasPath = false;
         // North
         JPanel northPanel = new JPanel();
         startRadio = new JRadioButton("Starting point");
@@ -70,6 +71,53 @@ public class Gui extends JPanel {
         southPanel.add(resetButton);
         southPanel.add(findPathButton);
         this.add(southPanel, BorderLayout.SOUTH);
+    }
+
+    /**
+     * Convert the Case matrix into an int matrix
+     *
+     * @return Integer matrix representation of the gui Case matrix
+     */
+    public int[][] caseMatrixToIntMatrix() {
+        int[][] matrixInt = new int[matrix.length][matrix[0].length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                matrixInt[i][j] = matrix[i][j].getValue();
+            }
+        }
+        return matrixInt;
+    }
+
+    /**
+     * Draw the path in the matrix grid
+     *
+     * @param path Path that you want to draw
+     */
+    public void drawPath(List<int[]> path) {
+        for (int[] ints : path) {
+            if (matrix[ints[0]][ints[1]].getValue() != Constants.START && matrix[ints[0]][ints[1]].getValue() != Constants.END) {
+                matrix[ints[0]][ints[1]].setBackgroundColor(Constants.PATH_COLOR);
+            }
+        }
+    }
+
+    /**
+     * Reset the matrix
+     */
+    public void resetMatrix() {
+        hasStartingPoint = false;
+        hasEndPoint = false;
+        hasPath = false;
+        clicked = false;
+        startRadio.setSelected(true);
+        endRadio.setSelected(false);
+        obstacleRadio.setSelected(false);
+        for (Case[] cases : matrix) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                cases[j].setValue(Constants.EMPTY);
+                cases[j].setBackgroundColor(Constants.DEFAULT_COLOR);
+            }
+        }
     }
 
     /**
@@ -178,5 +226,23 @@ public class Gui extends JPanel {
      */
     public void setHasEndPoint(boolean hasEndPoint) {
         this.hasEndPoint = hasEndPoint;
+    }
+
+    /**
+     * Get a boolean that indicates if the shortest path was already calculated or not
+     *
+     * @return boolean that indicates if the shortest path was already calculated or not
+     */
+    public boolean getHasPath() {
+        return hasPath;
+    }
+
+    /**
+     * Set the boolean value that indicates if a path was already calculated or not
+     *
+     * @param hasPath New boolean value that indicates if a path was already calculated or not (true: yes; false: no)
+     */
+    public void setHasPath(boolean hasPath) {
+        this.hasPath = hasPath;
     }
 }
