@@ -1,5 +1,7 @@
 package main.java.fr.alexandreladriere.shortestpath.gui;
 
+import main.java.fr.alexandreladriere.shortestpath.utils.Constants;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
@@ -12,7 +14,8 @@ public class Gui extends JPanel {
     private final JButton resetButton;
     private final JButton findPathButton;
     private final Controller controller;
-    private int[][] matrix;
+    private final JPanel matrixGridPanel;
+    private final Case[][] matrix;
     private List<int[]> path;
 
     /**
@@ -24,6 +27,18 @@ public class Gui extends JPanel {
         // North
         titleLabel = new JLabel("Select a starting point");
         this.add(titleLabel, BorderLayout.NORTH);
+
+        // Center
+        matrixGridPanel = new JPanel();
+        matrixGridPanel.setLayout(new GridLayout(Constants.DEFAULT_MATRIX_ROW, Constants.DEFAULT_MATRIX_COL)); // default
+        matrix = new Case[Constants.DEFAULT_MATRIX_ROW][Constants.DEFAULT_MATRIX_COL];
+        for (int i = 0; i < Constants.DEFAULT_MATRIX_ROW; i++) {
+            for (int j = 0; j < Constants.DEFAULT_MATRIX_COL; j++) {
+                matrix[i][j] = new Case(this, i, j, Constants.EMPTY);
+                matrixGridPanel.add(matrix[i][j]);
+            }
+        }
+        this.add(matrixGridPanel, BorderLayout.CENTER);
 
         // South
         JPanel southPanel = new JPanel();
