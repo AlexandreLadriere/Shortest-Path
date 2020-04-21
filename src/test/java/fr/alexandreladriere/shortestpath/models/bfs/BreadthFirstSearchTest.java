@@ -78,21 +78,20 @@ public class BreadthFirstSearchTest {
                         }},
                         new ArrayList<int[]>() {{
                             add(new int[]{0, 1});
-                            add(new int[]{0, 0});
                             add(new int[]{1, 0});
                             add(new int[]{2, 1});
                             add(new int[]{3, 2});
                             add(new int[]{3, 3});
                         }},
                         8,
-                        6
+                        5
                 },
                 // 2 starting points
                 {new int[][]{
                         {Constants.EMPTY, Constants.EMPTY, Constants.START, Constants.EMPTY},
                         {Constants.EMPTY, Constants.OBSTACLE, Constants.OBSTACLE, Constants.OBSTACLE},
                         {Constants.EMPTY, Constants.EMPTY, Constants.START, Constants.EMPTY},
-                        {Constants.OBSTACLE, Constants.EMPTY, Constants.EMPTY, Constants.END}
+                        {Constants.OBSTACLE, Constants.EMPTY, Constants.OBSTACLE, Constants.END}
                 },
                         new int[]{0, 2},
                         new ArrayList<int[]>() {{
@@ -102,21 +101,20 @@ public class BreadthFirstSearchTest {
                             add(new int[]{1, 0});
                             add(new int[]{2, 0});
                             add(new int[]{2, 1});
-                            add(new int[]{3, 1});
-                            add(new int[]{3, 2});
+                            add(new int[]{2, 2});
+                            add(new int[]{2, 3});
                             add(new int[]{3, 3});
                         }},
                         new ArrayList<int[]>() {{
                             add(new int[]{0, 2});
                             add(new int[]{0, 1});
-                            add(new int[]{0, 0});
                             add(new int[]{1, 0});
                             add(new int[]{2, 1});
-                            add(new int[]{3, 2});
+                            add(new int[]{2, 2});
                             add(new int[]{3, 3});
                         }},
                         9,
-                        7
+                        6
                 },
                 // No starting point
                 {new int[][]{
@@ -143,7 +141,7 @@ public class BreadthFirstSearchTest {
                             add(new int[]{3, 3});
                         }},
                         7,
-                        6
+                        5
                 },
         });
     }
@@ -201,7 +199,7 @@ public class BreadthFirstSearchTest {
     @Test
     public void shortestPathLengthTest() {
         collector.checkThat(expectedPathLength, equalTo(BreadthFirstSearch.shortestPathLength(matrix, false)));
-        //collector.checkThat(expectedPathLengthWithDiag, equalTo(BreadthFirstSearch.shortestPathLength(matrix, true)));
+        collector.checkThat(expectedPathLengthWithDiag, equalTo(BreadthFirstSearch.shortestPathLength(matrix, true)));
     }
 
     /**
@@ -215,15 +213,16 @@ public class BreadthFirstSearchTest {
             collector.checkThat(expectedPath.get(i)[0], equalTo(shortestPath.get(i)[0]));
             collector.checkThat(expectedPath.get(i)[1], equalTo(shortestPath.get(i)[1]));
         }
-        /*
+
         for (int j = 0; j < shortestPathWithDiag.size(); j++) {
-            System.out.println("{expectedPathWithDiag.get(i)[0], expectedPathWithDiag.get(i)[1]}={" + expectedPathWithDiag.get(i)[0] + ", " + expectedPathWithDiag.get(i)[1] + "}");
-            System.out.println("{shortestPathWithDiag.get(i)[0], shortestPathWithDiag.get(i)[1]}={" + shortestPathWithDiag.get(i)[0] + ", " + shortestPathWithDiag.get(i)[1] + "}");
+            /*
+            System.out.println("{expectedPathWithDiag.get(j)[0], expectedPathWithDiag.get(j)[1]}={" + expectedPathWithDiag.get(j)[0] + ", " + expectedPathWithDiag.get(j)[1] + "}");
+            System.out.println("{shortestPathWithDiag.get(j)[0], shortestPathWithDiag.get(j)[1]}={" + shortestPathWithDiag.get(j)[0] + ", " + shortestPathWithDiag.get(j)[1] + "}");
             System.out.println("-----");
+
+             */
             collector.checkThat(expectedPathWithDiag.get(j)[0], equalTo(shortestPathWithDiag.get(j)[0]));
             collector.checkThat(expectedPathWithDiag.get(j)[1], equalTo(shortestPathWithDiag.get(j)[1]));
         }
-
-         */
     }
 }
