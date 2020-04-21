@@ -215,12 +215,6 @@ public class BreadthFirstSearchTest {
         }
 
         for (int j = 0; j < shortestPathWithDiag.size(); j++) {
-            /*
-            System.out.println("{expectedPathWithDiag.get(j)[0], expectedPathWithDiag.get(j)[1]}={" + expectedPathWithDiag.get(j)[0] + ", " + expectedPathWithDiag.get(j)[1] + "}");
-            System.out.println("{shortestPathWithDiag.get(j)[0], shortestPathWithDiag.get(j)[1]}={" + shortestPathWithDiag.get(j)[0] + ", " + shortestPathWithDiag.get(j)[1] + "}");
-            System.out.println("-----");
-
-             */
             collector.checkThat(expectedPathWithDiag.get(j)[0], equalTo(shortestPathWithDiag.get(j)[0]));
             collector.checkThat(expectedPathWithDiag.get(j)[1], equalTo(shortestPathWithDiag.get(j)[1]));
         }
