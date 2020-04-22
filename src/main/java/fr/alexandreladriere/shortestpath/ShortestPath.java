@@ -14,7 +14,7 @@ public class ShortestPath extends JFrame {
     public ShortestPath() {
         super("Find shortest path - Alexandre Ladrière - 2020");
         setResizable(true);
-        Gui gui = new Gui();
+        Gui gui = new Gui(this);
         this.setJMenuBar(gui.getMenuBar());
         setContentPane(gui);
         pack();

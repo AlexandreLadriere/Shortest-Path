@@ -17,22 +17,25 @@ public class Gui extends JPanel {
     private final JButton resetButton;
     private final JButton findPathButton;
     private final Controller controller;
-    private final JPanel matrixGridPanel;
-    private final Case[][] matrix;
+    private final JFrame parent;
+    private JPanel matrixGridPanel;
     private boolean clicked = false;
     private boolean hasStartingPoint;
     private boolean hasEndPoint;
     private boolean hasPath;
     private JMenuItem helpMenu;
+    private Case[][] matrix;
     private JRadioButtonMenuItem bfsRadioMenuItem;
     private JCheckBoxMenuItem useDiag;
     private JMenuBar menuBar;
+    private JMenuItem changeMatrixSizeMenuItem;
 
 
     /**
      * Default constructor
      */
-    public Gui() {
+    public Gui(JFrame parent) {
+        this.parent = parent;
         this.setLayout(new BorderLayout());
         this.controller = new Controller(this);
         hasEndPoint = false;
@@ -100,11 +103,15 @@ public class Gui extends JPanel {
         // useDiag menu check box
         useDiag = new JCheckBoxMenuItem("Allow diagonal moves");
         useDiag.setSelected(false);
+        // Change Matrix size menu item
+        changeMatrixSizeMenuItem = new JMenuItem("Change the matrix size");
+        changeMatrixSizeMenuItem.addActionListener(controller);
         // Adding to menu
         settingsMenu.add(algoSubMenu);
         settingsMenu.addSeparator();
         settingsMenu.add(useDiag);
         settingsMenu.addSeparator();
+        settingsMenu.add(changeMatrixSizeMenuItem);
         menuBar.add(settingsMenu);
         // menuBar.add(Box.createGlue());
         menuBar.add(helpMenu);
@@ -139,9 +146,31 @@ public class Gui extends JPanel {
     }
 
     /**
-     * Reset the matrix
+     * Change the grid size of the gui
+     *
+     * @param rows New number of rows
+     * @param cols New number of columns
      */
-    public void resetMatrix() {
+    public void changeGridSize(int rows, int cols) {
+        resetBool();
+        matrixGridPanel = new JPanel();
+        matrixGridPanel.setLayout(new GridLayout(rows, cols));
+        matrix = new Case[rows][cols];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = new Case(this, i, j, Constants.EMPTY);
+                matrix[i][j].addMouseListener(new MouseController(this, i, j));
+                matrixGridPanel.add(matrix[i][j]);
+            }
+        }
+        this.add(matrixGridPanel, BorderLayout.CENTER);
+        parent.pack();
+    }
+
+    /**
+     * Reset all useful booleans
+     */
+    private void resetBool() {
         hasStartingPoint = false;
         hasEndPoint = false;
         hasPath = false;
@@ -149,6 +178,13 @@ public class Gui extends JPanel {
         startRadio.setSelected(true);
         endRadio.setSelected(false);
         obstacleRadio.setSelected(false);
+    }
+
+    /**
+     * Reset the matrix
+     */
+    public void resetMatrix() {
+        resetBool();
         for (Case[] cases : matrix) {
             for (int j = 0; j < matrix[0].length; j++) {
                 cases[j].setValue(Constants.EMPTY);
@@ -308,5 +344,14 @@ public class Gui extends JPanel {
      */
     public JRadioButtonMenuItem getBfsRadioMenuItem() {
         return bfsRadioMenuItem;
+    }
+
+    /**
+     * Get the JMenuItem corresponding to the "change matrix size" setting
+     *
+     * @return JMenuItem corresponding to the "change matrix size" setting
+     */
+    public JMenuItem getChangeMatrixSizeMenuItem() {
+        return changeMatrixSizeMenuItem;
     }
 }
