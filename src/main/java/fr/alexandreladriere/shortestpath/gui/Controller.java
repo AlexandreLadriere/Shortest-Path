@@ -27,9 +27,13 @@ public class Controller implements ActionListener {
         Object cmd = actionEvent.getSource();
         if (cmd.equals(gui.getFindPathButton()) && gui.getHasStartingPoint() && gui.getHasEndPoint()) {
             if (gui.getBfsRadioMenuItem().isSelected()) {
+                long startTime = System.nanoTime();
                 List<int[]> path = BreadthFirstSearch.shortestPath(gui.caseMatrixToIntMatrix(), gui.getUseDiag().getState());
+                long endTime = System.nanoTime();
+                long duration = (endTime - startTime) / 1000000; // get in ms
                 gui.setHasPath(true);
                 gui.drawPath(path);
+                gui.getPathInfo().setText("Path length = " + path.size() + "    |    Calculation time = " + duration + " ms");
             }
         }
         if (cmd.equals(gui.getResetButton())) {

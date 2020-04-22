@@ -16,6 +16,7 @@ public class Gui extends JPanel {
     private final JRadioButton obstacleRadio;
     private final JButton resetButton;
     private final JButton findPathButton;
+    private final JLabel pathInfo;
     private final Controller controller;
     private final JFrame parent;
     private JPanel matrixGridPanel;
@@ -75,12 +76,17 @@ public class Gui extends JPanel {
 
         // South
         JPanel southPanel = new JPanel();
+        southPanel.setLayout(new BorderLayout());
+        pathInfo = new JLabel(" ", SwingConstants.CENTER);
+        JPanel subCenterPanel = new JPanel();
         resetButton = new JButton("Reset");
         resetButton.addActionListener(controller);
         findPathButton = new JButton("Find shortest path");
         findPathButton.addActionListener(controller);
-        southPanel.add(resetButton);
-        southPanel.add(findPathButton);
+        subCenterPanel.add(resetButton);
+        subCenterPanel.add(findPathButton);
+        southPanel.add(pathInfo, BorderLayout.NORTH);
+        southPanel.add(subCenterPanel, BorderLayout.CENTER);
         this.add(southPanel, BorderLayout.SOUTH);
     }
 
@@ -373,5 +379,14 @@ public class Gui extends JPanel {
      */
     public JMenuItem getChangeMatrixSizeMenuItem() {
         return changeMatrixSizeMenuItem;
+    }
+
+    /**
+     * Get the Jlabel that displays path information
+     *
+     * @return Jlabel that displays path information
+     */
+    public JLabel getPathInfo() {
+        return pathInfo;
     }
 }
