@@ -26,7 +26,7 @@ public class Gui extends JPanel {
     private boolean hasStartingPoint;
     private boolean hasEndPoint;
     private boolean hasPath;
-    private JMenuItem helpMenu;
+    private JMenuItem helpMenuItem;
     private Case[][] matrix;
     private JRadioButtonMenuItem bfsRadioMenuItem;
     private JCheckBoxMenuItem useDiag;
@@ -97,8 +97,10 @@ public class Gui extends JPanel {
     private void initMenu() {
         // Menu bar
         menuBar = new JMenuBar();
-        helpMenu = new JMenu(Strings.HELP);
-        helpMenu.addActionListener(controller);
+        JMenu moreMenu = new JMenu(Strings.MORE);
+        helpMenuItem = new JMenuItem(Strings.HELP);
+        helpMenuItem.addActionListener(controller);
+        moreMenu.add(helpMenuItem);
         // Settings menu
         JMenu settingsMenu = new JMenu(Strings.SETTINGS);
         // Algorithms submenu
@@ -122,7 +124,7 @@ public class Gui extends JPanel {
         settingsMenu.add(changeMatrixSizeMenuItem);
         menuBar.add(settingsMenu);
         // menuBar.add(Box.createGlue());
-        menuBar.add(helpMenu);
+        menuBar.add(moreMenu);
     }
 
     /**
@@ -389,5 +391,14 @@ public class Gui extends JPanel {
      */
     public JLabel getPathInfo() {
         return pathInfo;
+    }
+
+    /**
+     * Get the "Help" menu item
+     *
+     * @return "Help" menu item object
+     */
+    public JMenuItem getHelpMenuItem() {
+        return helpMenuItem;
     }
 }

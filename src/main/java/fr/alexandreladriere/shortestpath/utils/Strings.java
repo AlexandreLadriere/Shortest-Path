@@ -18,4 +18,19 @@ public final class Strings {
     public static final String CHANGE_SIZE = "Change matrix size";
     public static final String ROW_NUMBER = "Number of rows ";
     public static final String COL_NUMBER = "Number of columns ";
+    public static final String MORE = "More...";
+    public static final String HELP_CONTENT = "Created by Alexandre Ladrière in 2020 - MIT Licence\n" +
+            "\n" +
+            "This project aims to implement some algorithms for finding the shortest path between a starting point and an end point in a matrix with obstacles, and to illustrate the solutions through a graphical interface.\n" +
+            "\n" +
+            "How to use it ?\n" +
+            "1- Select the algorithm that you want to use (Settings > Algorithms)\n" +
+            "2- Select if you want to allow diagonal moves (Settings > \"Allow diagonal moves\"\n" +
+            "3- Select the grid size that you want (Settings > \"Change matrix size\"\n" +
+            "4- Click on \"Starting point\" and select where you want to place your starting point\n" +
+            "5- Click on \"End point\" and select where you want to place your end point\n" +
+            "6- Click on \"Obstacles\" and click wherever you want to place obstacles (you can hold LEFT CLICK)\n" +
+            "7- Click on \"Find shortest path\"\n" +
+            "\n" +
+            "Note: You can remove the starting point, the end point or obstacles by right clicking on it (you can also hold RIGHT CLICK).";
 }

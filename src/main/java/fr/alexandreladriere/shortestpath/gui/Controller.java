@@ -62,5 +62,8 @@ public class Controller implements ActionListener {
                 gui.changeGridSize(rows, cols);
             }
         }
+        if (cmd.equals(gui.getHelpMenuItem())) {
+            JOptionPane.showMessageDialog(null, Strings.HELP_CONTENT);
+        }
     }
 }
