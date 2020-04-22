@@ -1,26 +1,29 @@
 package main.java.fr.alexandreladriere.shortestpath;
 
-import main.java.fr.alexandreladriere.shortestpath.models.bfs.BreadthFirstSearch;
-import main.java.fr.alexandreladriere.shortestpath.utils.Constants;
+import main.java.fr.alexandreladriere.shortestpath.gui.Gui;
+import main.java.fr.alexandreladriere.shortestpath.utils.Strings;
 
-import java.util.List;
+import javax.swing.*;
 
 /**
  * Main class
  */
-public class ShortestPath {
+public class ShortestPath extends JFrame {
+    /**
+     * Default constructor
+     */
+    public ShortestPath() {
+        super(Strings.TITLE);
+        setResizable(true);
+        Gui gui = new Gui(this);
+        this.setJMenuBar(gui.getMenuBar());
+        setContentPane(gui);
+        pack();
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
     public static void main(String[] args) {
-        int[][] matrixTest = new int[][]{
-                {Constants.EMPTY, Constants.START, Constants.EMPTY, Constants.EMPTY},
-                {Constants.EMPTY, Constants.OBSTACLE, Constants.OBSTACLE, Constants.OBSTACLE},
-                {Constants.EMPTY, Constants.EMPTY, Constants.OBSTACLE, Constants.EMPTY},
-                {Constants.OBSTACLE, Constants.EMPTY, Constants.EMPTY, Constants.END}
-        };
-        System.out.println("shortestPathLength=" + BreadthFirstSearch.shortestPathLength(matrixTest, true));
-        List<int[]> pathTest = BreadthFirstSearch.shortestPath(matrixTest, true);
-        System.out.println("pathTestLength=" + pathTest.size());
-        for (int[] ints : pathTest) {
-            System.out.println("(" + ints[0] + ", " + ints[1] + ")");
-        }
+        new ShortestPath();
     }
 }
