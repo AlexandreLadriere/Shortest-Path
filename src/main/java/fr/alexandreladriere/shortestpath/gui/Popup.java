@@ -1,5 +1,7 @@
 package main.java.fr.alexandreladriere.shortestpath.gui;
 
+import main.java.fr.alexandreladriere.shortestpath.utils.Strings;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -22,7 +24,7 @@ public class Popup extends JPanel {
         // North panel
         JPanel northPanel = new JPanel();
         northPanel.setLayout(new BorderLayout());
-        JLabel rowNumber = new JLabel("Number of rows ");
+        JLabel rowNumber = new JLabel(Strings.ROW_NUMBER);
         rowNumberTextField = new JTextField(String.valueOf(row), 5);
         northPanel.add(rowNumber, BorderLayout.WEST);
         northPanel.add(rowNumberTextField, BorderLayout.EAST);
@@ -30,7 +32,7 @@ public class Popup extends JPanel {
         // South panel
         JPanel southPanel = new JPanel();
         southPanel.setLayout(new BorderLayout());
-        JLabel colNumber = new JLabel("Number of columns ");
+        JLabel colNumber = new JLabel(Strings.COL_NUMBER);
         colNumberTextField = new JTextField(String.valueOf(col), 5);
         southPanel.add(colNumber, BorderLayout.WEST);
         southPanel.add(colNumberTextField, BorderLayout.EAST);

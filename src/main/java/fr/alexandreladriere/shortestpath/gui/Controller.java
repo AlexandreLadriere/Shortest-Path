@@ -1,6 +1,7 @@
 package main.java.fr.alexandreladriere.shortestpath.gui;
 
 import main.java.fr.alexandreladriere.shortestpath.models.bfs.BreadthFirstSearch;
+import main.java.fr.alexandreladriere.shortestpath.utils.Strings;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -25,7 +26,9 @@ public class Controller implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         Object cmd = actionEvent.getSource();
+        // Compute the shortest path
         if (cmd.equals(gui.getFindPathButton()) && gui.getHasStartingPoint() && gui.getHasEndPoint()) {
+            // BFS algorithm
             if (gui.getBfsRadioMenuItem().isSelected()) {
                 long startTime = System.nanoTime();
                 List<int[]> path = BreadthFirstSearch.shortestPath(gui.caseMatrixToIntMatrix(), gui.getUseDiag().getState());
@@ -36,16 +39,18 @@ public class Controller implements ActionListener {
                 gui.getPathInfo().setText("Path length = " + path.size() + "    |    Calculation time = " + duration + " ms");
             }
         }
+        // reset the matrix/grid
         if (cmd.equals(gui.getResetButton())) {
             gui.resetMatrix();
         }
+        // display the popup dialog that requests new dimensions
         if (cmd.equals(gui.getChangeMatrixSizeMenuItem())) {
             Popup popupPanel = new Popup(gui.getMatrix().length, gui.getMatrix()[0].length);
             int rows = 0;
             int cols = 0;
             boolean cancel = false;
             while (rows < 2 || cols < 2 || rows * cols == 0) {
-                if (JOptionPane.showConfirmDialog(null, popupPanel, "Change matrix size", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+                if (JOptionPane.showConfirmDialog(null, popupPanel, Strings.CHANGE_SIZE, JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
                     rows = Integer.parseInt(popupPanel.getRowNumberTextField().getText());
                     cols = Integer.parseInt(popupPanel.getColNumberTextField().getText());
                 } else {

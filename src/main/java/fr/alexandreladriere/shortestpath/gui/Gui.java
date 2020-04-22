@@ -2,6 +2,7 @@ package main.java.fr.alexandreladriere.shortestpath.gui;
 
 import main.java.fr.alexandreladriere.shortestpath.utils.Colors;
 import main.java.fr.alexandreladriere.shortestpath.utils.Constants;
+import main.java.fr.alexandreladriere.shortestpath.utils.Strings;
 
 import javax.swing.*;
 import java.awt.*;
@@ -46,11 +47,11 @@ public class Gui extends JPanel {
         initMenu();
         // North
         JPanel northPanel = new JPanel();
-        startRadio = new JRadioButton("Starting point");
+        startRadio = new JRadioButton(Strings.STARTING_POINT);
         startRadio.setSelected(true);
-        endRadio = new JRadioButton("End point");
+        endRadio = new JRadioButton(Strings.END_POINT);
         endRadio.setSelected(false);
-        obstacleRadio = new JRadioButton("Obstacles");
+        obstacleRadio = new JRadioButton(Strings.OBSTACLES);
         obstacleRadio.setSelected(false);
         ButtonGroup bg = new ButtonGroup();
         bg.add(startRadio);
@@ -79,9 +80,9 @@ public class Gui extends JPanel {
         southPanel.setLayout(new BorderLayout());
         pathInfo = new JLabel(" ", SwingConstants.CENTER);
         JPanel subCenterPanel = new JPanel();
-        resetButton = new JButton("Reset");
+        resetButton = new JButton(Strings.RESET);
         resetButton.addActionListener(controller);
-        findPathButton = new JButton("Find shortest path");
+        findPathButton = new JButton(Strings.FIND);
         findPathButton.addActionListener(controller);
         subCenterPanel.add(resetButton);
         subCenterPanel.add(findPathButton);
@@ -96,22 +97,22 @@ public class Gui extends JPanel {
     private void initMenu() {
         // Menu bar
         menuBar = new JMenuBar();
-        helpMenu = new JMenu("Help");
+        helpMenu = new JMenu(Strings.HELP);
         helpMenu.addActionListener(controller);
         // Settings menu
-        JMenu settingsMenu = new JMenu("Settings");
+        JMenu settingsMenu = new JMenu(Strings.SETTINGS);
         // Algorithms submenu
-        JMenu algoSubMenu = new JMenu("Algorithms");
+        JMenu algoSubMenu = new JMenu(Strings.ALGO);
         ButtonGroup bgMenu = new ButtonGroup();
-        bfsRadioMenuItem = new JRadioButtonMenuItem("Breadth-first Search (BFS)");
+        bfsRadioMenuItem = new JRadioButtonMenuItem(Strings.ALGO_BFS);
         bfsRadioMenuItem.setSelected(true);
         bgMenu.add(bfsRadioMenuItem);
         algoSubMenu.add(bfsRadioMenuItem);
         // useDiag menu check box
-        useDiag = new JCheckBoxMenuItem("Allow diagonal moves");
+        useDiag = new JCheckBoxMenuItem(Strings.USE_DIAG);
         useDiag.setSelected(false);
         // Change Matrix size menu item
-        changeMatrixSizeMenuItem = new JMenuItem("Change the matrix size");
+        changeMatrixSizeMenuItem = new JMenuItem(Strings.CHANGE_SIZE);
         changeMatrixSizeMenuItem.addActionListener(controller);
         // Adding to menu
         settingsMenu.add(algoSubMenu);

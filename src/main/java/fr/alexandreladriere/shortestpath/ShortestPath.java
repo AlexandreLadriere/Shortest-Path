@@ -1,6 +1,7 @@
 package main.java.fr.alexandreladriere.shortestpath;
 
 import main.java.fr.alexandreladriere.shortestpath.gui.Gui;
+import main.java.fr.alexandreladriere.shortestpath.utils.Strings;
 
 import javax.swing.*;
 
@@ -12,7 +13,7 @@ public class ShortestPath extends JFrame {
      * Default constructor
      */
     public ShortestPath() {
-        super("Find shortest path - Alexandre Ladrière - 2020");
+        super(Strings.TITLE);
         setResizable(true);
         Gui gui = new Gui(this);
         this.setJMenuBar(gui.getMenuBar());
