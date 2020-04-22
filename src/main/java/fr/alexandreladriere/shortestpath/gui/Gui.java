@@ -20,6 +20,7 @@ public class Gui extends JPanel {
     private final JFrame parent;
     private JPanel matrixGridPanel;
     private boolean clicked = false;
+    private boolean rClicked = false;
     private boolean hasStartingPoint;
     private boolean hasEndPoint;
     private boolean hasPath;
@@ -175,6 +176,7 @@ public class Gui extends JPanel {
         hasEndPoint = false;
         hasPath = false;
         clicked = false;
+        rClicked = false;
         startRadio.setSelected(true);
         endRadio.setSelected(false);
         obstacleRadio.setSelected(false);
@@ -218,6 +220,24 @@ public class Gui extends JPanel {
      */
     public boolean getClicked() {
         return clicked;
+    }
+
+    /**
+     * Get the "right clicked" boolean
+     *
+     * @return "Right clicked" boolean
+     */
+    public boolean getRClicked() {
+        return rClicked;
+    }
+
+    /**
+     * Set the "right clicked" boolean
+     *
+     * @param rClicked New value for "rClicked" bool
+     */
+    public void setRClicked(boolean rClicked) {
+        this.rClicked = rClicked;
     }
 
     /**
