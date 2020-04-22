@@ -1,5 +1,6 @@
 package main.java.fr.alexandreladriere.shortestpath.gui;
 
+import main.java.fr.alexandreladriere.shortestpath.utils.Colors;
 import main.java.fr.alexandreladriere.shortestpath.utils.Constants;
 
 import java.awt.event.MouseEvent;
@@ -34,17 +35,17 @@ public class MouseController implements MouseListener {
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         if (gui.getStartRadio().isSelected() && !gui.getHasStartingPoint()) {
-            gui.getMatrix()[x][y].setBackgroundColor(Constants.START_COLOR);
+            gui.getMatrix()[x][y].setBackgroundColor(Colors.START_COLOR);
             gui.getMatrix()[x][y].setValue(Constants.START);
             gui.setHasStartingPoint(true);
         }
         if (gui.getEndRadio().isSelected() && !gui.getHasEndPoint()) {
-            gui.getMatrix()[x][y].setBackgroundColor(Constants.END_COLOR);
+            gui.getMatrix()[x][y].setBackgroundColor(Colors.END_COLOR);
             gui.getMatrix()[x][y].setValue(Constants.END);
             gui.setHasEndPoint(true);
         }
         if (gui.getObstacleRadio().isSelected() && !gui.getHasPath()) {
-            gui.getMatrix()[x][y].setBackgroundColor(Constants.OBSTACLE_COLOR);
+            gui.getMatrix()[x][y].setBackgroundColor(Colors.OBSTACLE_COLOR);
             gui.getMatrix()[x][y].setValue(Constants.OBSTACLE);
         }
         gui.setClicked(true);
@@ -58,7 +59,7 @@ public class MouseController implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent mouseEvent) {
         if (gui.getClicked() && gui.getObstacleRadio().isSelected() && !gui.getHasPath()) {
-            gui.getMatrix()[x][y].setBackgroundColor(Constants.OBSTACLE_COLOR);
+            gui.getMatrix()[x][y].setBackgroundColor(Colors.OBSTACLE_COLOR);
             gui.getMatrix()[x][y].setValue(Constants.OBSTACLE);
         }
     }

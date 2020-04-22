@@ -1,5 +1,6 @@
 package main.java.fr.alexandreladriere.shortestpath.gui;
 
+import main.java.fr.alexandreladriere.shortestpath.utils.Colors;
 import main.java.fr.alexandreladriere.shortestpath.utils.Constants;
 
 import javax.swing.*;
@@ -10,10 +11,7 @@ import java.awt.*;
  */
 public class Case extends JPanel {
 
-    private final int x;
-    private final int y;
     private int value;
-    private final Gui gui;
 
     /**
      * Default constructor
@@ -24,12 +22,9 @@ public class Case extends JPanel {
      * @param value Value of the Case
      */
     public Case(Gui gui, int x, int y, int value) {
-        this.gui = gui;
-        this.x = x;
-        this.y = y;
         this.value = value;
-        setBackgroundColor(Constants.DEFAULT_COLOR);
-        this.setBorder(BorderFactory.createLineBorder(Constants.BORDER_COLOR));
+        setBackgroundColor(Colors.DEFAULT_COLOR);
+        this.setBorder(BorderFactory.createLineBorder(Colors.BORDER_COLOR));
         setPreferredSize(new Dimension(Constants.DIM_CASE, Constants.DIM_CASE));
     }
 

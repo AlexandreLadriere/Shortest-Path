@@ -1,5 +1,6 @@
 package main.java.fr.alexandreladriere.shortestpath.gui;
 
+import main.java.fr.alexandreladriere.shortestpath.utils.Colors;
 import main.java.fr.alexandreladriere.shortestpath.utils.Constants;
 
 import javax.swing.*;
@@ -96,7 +97,7 @@ public class Gui extends JPanel {
     public void drawPath(List<int[]> path) {
         for (int[] ints : path) {
             if (matrix[ints[0]][ints[1]].getValue() != Constants.START && matrix[ints[0]][ints[1]].getValue() != Constants.END) {
-                matrix[ints[0]][ints[1]].setBackgroundColor(Constants.PATH_COLOR);
+                matrix[ints[0]][ints[1]].setBackgroundColor(Colors.PATH_COLOR);
             }
         }
     }
@@ -115,7 +116,7 @@ public class Gui extends JPanel {
         for (Case[] cases : matrix) {
             for (int j = 0; j < matrix[0].length; j++) {
                 cases[j].setValue(Constants.EMPTY);
-                cases[j].setBackgroundColor(Constants.DEFAULT_COLOR);
+                cases[j].setBackgroundColor(Colors.DEFAULT_COLOR);
             }
         }
     }
