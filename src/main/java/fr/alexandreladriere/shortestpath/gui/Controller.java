@@ -25,9 +25,11 @@ public class Controller implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         Object cmd = actionEvent.getSource();
         if (cmd.equals(gui.getFindPathButton()) && gui.getHasStartingPoint() && gui.getHasEndPoint()) {
-            List<int[]> path = BreadthFirstSearch.shortestPath(gui.caseMatrixToIntMatrix(), true);
-            gui.setHasPath(true);
-            gui.drawPath(path);
+            if (gui.getBfsRadioMenuItem().isSelected()) {
+                List<int[]> path = BreadthFirstSearch.shortestPath(gui.caseMatrixToIntMatrix(), gui.getUseDiag().getState());
+                gui.setHasPath(true);
+                gui.drawPath(path);
+            }
         }
         if (cmd.equals(gui.getResetButton())) {
             gui.resetMatrix();

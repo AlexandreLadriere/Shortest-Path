@@ -23,6 +23,11 @@ public class Gui extends JPanel {
     private boolean hasStartingPoint;
     private boolean hasEndPoint;
     private boolean hasPath;
+    private JMenuItem helpMenu;
+    private JRadioButtonMenuItem bfsRadioMenuItem;
+    private JCheckBoxMenuItem useDiag;
+    private JMenuBar menuBar;
+
 
     /**
      * Default constructor
@@ -33,6 +38,7 @@ public class Gui extends JPanel {
         hasEndPoint = false;
         hasStartingPoint = false;
         hasPath = false;
+        initMenu();
         // North
         JPanel northPanel = new JPanel();
         startRadio = new JRadioButton("Starting point");
@@ -72,6 +78,36 @@ public class Gui extends JPanel {
         southPanel.add(resetButton);
         southPanel.add(findPathButton);
         this.add(southPanel, BorderLayout.SOUTH);
+    }
+
+    /**
+     * Initialize the menu bar
+     */
+    private void initMenu() {
+        // Menu bar
+        menuBar = new JMenuBar();
+        helpMenu = new JMenu("Help");
+        helpMenu.addActionListener(controller);
+        // Settings menu
+        JMenu settingsMenu = new JMenu("Settings");
+        // Algorithms submenu
+        JMenu algoSubMenu = new JMenu("Algorithms");
+        ButtonGroup bgMenu = new ButtonGroup();
+        bfsRadioMenuItem = new JRadioButtonMenuItem("Breadth-first Search (BFS)");
+        bfsRadioMenuItem.setSelected(true);
+        bgMenu.add(bfsRadioMenuItem);
+        algoSubMenu.add(bfsRadioMenuItem);
+        // useDiag menu check box
+        useDiag = new JCheckBoxMenuItem("Allow diagonal moves");
+        useDiag.setSelected(false);
+        // Adding to menu
+        settingsMenu.add(algoSubMenu);
+        settingsMenu.addSeparator();
+        settingsMenu.add(useDiag);
+        settingsMenu.addSeparator();
+        menuBar.add(settingsMenu);
+        // menuBar.add(Box.createGlue());
+        menuBar.add(helpMenu);
     }
 
     /**
@@ -245,5 +281,32 @@ public class Gui extends JPanel {
      */
     public void setHasPath(boolean hasPath) {
         this.hasPath = hasPath;
+    }
+
+    /**
+     * Get the menu bar object
+     *
+     * @return JMenuBar
+     */
+    public JMenuBar getMenuBar() {
+        return menuBar;
+    }
+
+    /**
+     * Get the "useDiag" check box menu item
+     *
+     * @return "useDiag" check box menu item
+     */
+    public JCheckBoxMenuItem getUseDiag() {
+        return useDiag;
+    }
+
+    /**
+     * Get the BFS RadioMenuItem
+     *
+     * @return BFS RadioMenuItem
+     */
+    public JRadioButtonMenuItem getBfsRadioMenuItem() {
+        return bfsRadioMenuItem;
     }
 }
