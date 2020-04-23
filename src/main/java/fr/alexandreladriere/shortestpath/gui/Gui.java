@@ -36,6 +36,8 @@ public class Gui extends JPanel {
 
     /**
      * Default constructor
+     *
+     * @param parent Parent frame
      */
     public Gui(JFrame parent) {
         this.parent = parent;

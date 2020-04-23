@@ -14,6 +14,9 @@ public class Popup extends JPanel {
 
     /**
      * Default constructor
+     *
+     * @param col Column number that you want to display in the text field (i.e. current col number)
+     * @param row Row number that you want to display in the text field (i.e. current row number)
      */
     public Popup(int row, int col) {
 
