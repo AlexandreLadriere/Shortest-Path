@@ -20,7 +20,7 @@ public class Gui extends JPanel {
     private final JLabel pathInfo;
     private final Controller controller;
     private final JFrame parent;
-    private JPanel matrixGridPanel;
+    private final JPanel matrixGridPanel;
     private boolean clicked = false;
     private boolean rClicked = false;
     private boolean hasStartingPoint;
@@ -182,7 +182,7 @@ public class Gui extends JPanel {
      */
     public void changeGridSize(int rows, int cols) {
         resetBool();
-        matrixGridPanel = new JPanel();
+        matrixGridPanel.removeAll();
         matrixGridPanel.setLayout(new GridLayout(rows, cols));
         matrix = new Case[rows][cols];
         for (int i = 0; i < rows; i++) {
@@ -192,7 +192,6 @@ public class Gui extends JPanel {
                 matrixGridPanel.add(matrix[i][j]);
             }
         }
-        this.add(matrixGridPanel, BorderLayout.CENTER);
         parent.pack();
     }
 
