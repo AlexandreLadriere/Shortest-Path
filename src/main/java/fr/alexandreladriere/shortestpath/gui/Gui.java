@@ -49,11 +49,18 @@ public class Gui extends JPanel {
         initMenu();
         // North
         JPanel northPanel = new JPanel();
+        northPanel.setBackground(Colors.BORDER_COLOR);
         startRadio = new JRadioButton(Strings.STARTING_POINT);
+        startRadio.setBackground(Colors.BORDER_COLOR);
+        startRadio.setForeground(Colors.TEXT_COLOR);
         startRadio.setSelected(true);
         endRadio = new JRadioButton(Strings.END_POINT);
+        endRadio.setBackground(Colors.BORDER_COLOR);
+        endRadio.setForeground(Colors.TEXT_COLOR);
         endRadio.setSelected(false);
         obstacleRadio = new JRadioButton(Strings.OBSTACLES);
+        obstacleRadio.setBackground(Colors.BORDER_COLOR);
+        obstacleRadio.setForeground(Colors.TEXT_COLOR);
         obstacleRadio.setSelected(false);
         ButtonGroup bg = new ButtonGroup();
         bg.add(startRadio);
@@ -81,15 +88,25 @@ public class Gui extends JPanel {
         JPanel southPanel = new JPanel();
         southPanel.setLayout(new BorderLayout());
         pathInfo = new JLabel(" ", SwingConstants.CENTER);
+        pathInfo.setBackground(Colors.BORDER_COLOR);
+        pathInfo.setForeground(Colors.TEXT_COLOR);
         JPanel subCenterPanel = new JPanel();
+        subCenterPanel.setBackground(Colors.BORDER_COLOR);
         resetButton = new JButton(Strings.RESET);
         resetButton.addActionListener(controller);
+        resetButton.setBorderPainted(false);
+        resetButton.setBackground(Colors.END_COLOR);
+        resetButton.setForeground(Colors.TEXT_COLOR);
         findPathButton = new JButton(Strings.FIND);
         findPathButton.addActionListener(controller);
+        findPathButton.setBorderPainted(false);
+        findPathButton.setBackground(Colors.START_COLOR);
+        findPathButton.setForeground(Colors.TEXT_COLOR);
         subCenterPanel.add(resetButton);
         subCenterPanel.add(findPathButton);
         southPanel.add(pathInfo, BorderLayout.NORTH);
         southPanel.add(subCenterPanel, BorderLayout.CENTER);
+        southPanel.setBackground(Colors.BORDER_COLOR);
         this.add(southPanel, BorderLayout.SOUTH);
     }
 
