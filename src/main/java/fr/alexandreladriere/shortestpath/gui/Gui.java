@@ -207,7 +207,19 @@ public class Gui extends JPanel {
         matrix = new Case[newMatrix.length][newMatrix[0].length];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
-                matrix[i][j] = new Case(this, i, j, newMatrix[i][j]);
+                int value = newMatrix[i][j];
+                matrix[i][j] = new Case(this, i, j, value);
+                if (value == Constants.START) {
+                    matrix[i][j].setBackgroundColor(Colors.START_COLOR);
+                    hasStartingPoint = true;
+                }
+                if (value == Constants.END) {
+                    matrix[i][j].setBackgroundColor(Colors.END_COLOR);
+                    hasEndPoint = true;
+                }
+                if (value == Constants.OBSTACLE) {
+                    matrix[i][j].setBackgroundColor(Colors.OBSTACLE_COLOR);
+                }
                 matrix[i][j].addMouseListener(new MouseController(this, i, j));
                 matrixGridPanel.add(matrix[i][j]);
             }

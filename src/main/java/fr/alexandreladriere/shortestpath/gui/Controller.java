@@ -42,6 +42,7 @@ public class Controller implements ActionListener {
         // reset the matrix/grid
         if (cmd.equals(gui.getResetButton())) {
             gui.resetMatrix();
+            //gui.loadMatrix(FileHandler.getMatrixFromFile("C:\\Users\\Alexandre\\Desktop\\test.txt"));
         }
         // display the popup dialog that requests new dimensions
         if (cmd.equals(gui.getChangeMatrixSizeMenuItem())) {
