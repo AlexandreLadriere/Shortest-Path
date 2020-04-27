@@ -12,6 +12,21 @@ import java.io.IOException;
 public final class FileHandler {
     /**
      * Retrieve the matrix from the given file
+     * <p>
+     * The file must have a specific format. Example of file content:
+     * <p>
+     * start=1
+     * end=2
+     * obstacle=-1
+     * <p>
+     * x=4
+     * y=5
+     * delimiter=;
+     * <p>
+     * 1;0;0;-1;-1
+     * 0;-1;-1;0;0
+     * 0;0;-1;-1;0
+     * -1;0;0;0;2
      *
      * @param file File path
      * @return Matrix which is in the text file
