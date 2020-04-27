@@ -5,6 +5,12 @@ import main.java.fr.alexandreladriere.shortestpath.utils.Constants;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implement the module that will load/save a matrix from a specific txt file
@@ -79,12 +85,42 @@ public final class FileHandler {
                 }
             }
         }
-        for (int[] ints : matrix) {
-            for (int n = 0; n < matrix[0].length; n++) {
-                System.out.println(ints[n]);
-            }
-        }
         return matrix;
     }
 
+    /**
+     * Save the given matrix to a text file according to a specific template
+     *
+     * @param matrix Matrix that you want to save
+     * @param file   Path of the file that you want to create
+     */
+    public static void saveMatrixToFile(int[][] matrix, String file) {
+        List<String> lines = new ArrayList<>();
+        lines.add("start=1");
+        lines.add("end=2");
+        lines.add("obstacle=-1");
+        lines.add("");
+        lines.add("x=" + matrix.length);
+        lines.add("y=" + matrix[0].length);
+        lines.add("delimiter=;");
+        lines.add("");
+        String delimiter = ";";
+        for (int[] ints : matrix) {
+            StringBuilder line = new StringBuilder();
+            for (int j = 0; j < matrix[0].length; j++) {
+                line.append(ints[j]);
+                // Do not add delimiter at the end of the line
+                if (j != matrix[0].length - 1) {
+                    line.append(delimiter);
+                }
+            }
+            lines.add(line.toString());
+        }
+        Path f = Paths.get(file);
+        try {
+            Files.write(f, lines, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
