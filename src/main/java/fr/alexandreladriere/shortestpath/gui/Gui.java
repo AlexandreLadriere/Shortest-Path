@@ -196,6 +196,26 @@ public class Gui extends JPanel {
     }
 
     /**
+     * Load a new pre-defined matrix to the grid panel
+     *
+     * @param newMatrix New matrix that you want to load
+     */
+    public void loadMatrix(int[][] newMatrix) {
+        resetBool();
+        matrixGridPanel.removeAll();
+        matrixGridPanel.setLayout(new GridLayout(newMatrix.length, newMatrix[0].length));
+        matrix = new Case[newMatrix.length][newMatrix[0].length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                matrix[i][j] = new Case(this, i, j, newMatrix[i][j]);
+                matrix[i][j].addMouseListener(new MouseController(this, i, j));
+                matrixGridPanel.add(matrix[i][j]);
+            }
+        }
+        parent.pack();
+    }
+
+    /**
      * Reset all useful booleans
      */
     private void resetBool() {
