@@ -1,7 +1,9 @@
 package main.java.fr.alexandreladriere.shortestpath.filehandler;
 
 import main.java.fr.alexandreladriere.shortestpath.utils.Constants;
+import main.java.fr.alexandreladriere.shortestpath.utils.Strings;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -122,5 +124,30 @@ public final class FileHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Display a FileDialog to retrieve the absolute path of a file
+     *
+     * @return Absolute path of a file
+     */
+    public static String getAbsoluteFilePath() {
+        FileDialog dialog = new FileDialog((Frame) null, Strings.SELECT_FILE);
+        dialog.setMode(FileDialog.LOAD);
+        dialog.setVisible(true);
+        return dialog.getDirectory() + dialog.getFile();
+    }
+
+    /**
+     * Display a FileDialog to retrieve the absolute path of the file to save
+     *
+     * @return Absolute path of the file to save
+     */
+    public static String getSaveAsAbsoluteFilePath() {
+        FileDialog dialog = new FileDialog((Frame) null, Strings.SAVE_AS);
+        dialog.setMode(FileDialog.SAVE);
+        dialog.setFile("matrix.txt");
+        dialog.setVisible(true);
+        return dialog.getDirectory() + dialog.getFile();
     }
 }

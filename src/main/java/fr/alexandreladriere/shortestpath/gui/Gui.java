@@ -27,6 +27,8 @@ public class Gui extends JPanel {
     private boolean hasEndPoint;
     private boolean hasPath;
     private JMenuItem helpMenuItem;
+    private JMenuItem saveAsMenuItem;
+    private JMenuItem loadMenuItem;
     private Case[][] matrix;
     private JRadioButtonMenuItem bfsRadioMenuItem;
     private JCheckBoxMenuItem useDiag;
@@ -116,6 +118,15 @@ public class Gui extends JPanel {
     private void initMenu() {
         // Menu bar
         menuBar = new JMenuBar();
+        // File Menu
+        JMenu fileMenu = new JMenu(Strings.FILE);
+        saveAsMenuItem = new JMenuItem(Strings.SAVE_AS);
+        saveAsMenuItem.addActionListener(controller);
+        loadMenuItem = new JMenuItem(Strings.LOAD);
+        loadMenuItem.addActionListener(controller);
+        fileMenu.add(saveAsMenuItem);
+        fileMenu.add(loadMenuItem);
+        // More menu
         JMenu moreMenu = new JMenu(Strings.MORE);
         helpMenuItem = new JMenuItem(Strings.HELP);
         helpMenuItem.addActionListener(controller);
@@ -141,6 +152,8 @@ public class Gui extends JPanel {
         settingsMenu.add(useDiag);
         settingsMenu.addSeparator();
         settingsMenu.add(changeMatrixSizeMenuItem);
+
+        menuBar.add(fileMenu);
         menuBar.add(settingsMenu);
         // menuBar.add(Box.createGlue());
         menuBar.add(moreMenu);
@@ -450,5 +463,23 @@ public class Gui extends JPanel {
      */
     public JMenuItem getHelpMenuItem() {
         return helpMenuItem;
+    }
+
+    /**
+     * Get the "Save as" menu item
+     *
+     * @return "Save as" menu item
+     */
+    public JMenuItem getSaveAsMenuItem() {
+        return saveAsMenuItem;
+    }
+
+    /**
+     * Get the "Load" menu item
+     *
+     * @return "Load" menu item
+     */
+    public JMenuItem getLoadMenuItem() {
+        return loadMenuItem;
     }
 }
