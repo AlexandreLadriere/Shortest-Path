@@ -19,6 +19,15 @@ public final class Strings {
     public static final String ROW_NUMBER = "Number of rows ";
     public static final String COL_NUMBER = "Number of columns ";
     public static final String MORE = "More...";
+    public static final String SAVE_AS = "Save As...";
+    public static final String LOAD = "Load...";
+    public static final String FILE = "File";
+    public static final String SELECT_FILE = "Select File to Open";
+    public static final String TXT_EXT = ".txt";
+    public static final String NO_TXT_MESSAGE = "The selected file must have the .txt extension. ";
+    public static final String SAVE_ERR = "Your file can not be saved.";
+    public static final String LOAD_ERR = "Your file can not be loaded.";
+    public static final String NO_TXT_TITLE = "Bad extension";
     public static final String HELP_CONTENT = "Created by Alexandre Ladrière in 2020 - MIT Licence\n" +
             "\n" +
             "This project aims to implement some algorithms for finding the shortest path between a starting point and an end point in a matrix with obstacles, and to illustrate the solutions through a graphical interface.\n" +

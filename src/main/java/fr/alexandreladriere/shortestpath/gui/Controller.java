@@ -1,5 +1,6 @@
 package main.java.fr.alexandreladriere.shortestpath.gui;
 
+import main.java.fr.alexandreladriere.shortestpath.filehandler.FileHandler;
 import main.java.fr.alexandreladriere.shortestpath.models.bfs.BreadthFirstSearch;
 import main.java.fr.alexandreladriere.shortestpath.utils.Strings;
 
@@ -42,6 +43,22 @@ public class Controller implements ActionListener {
         // reset the matrix/grid
         if (cmd.equals(gui.getResetButton())) {
             gui.resetMatrix();
+        }
+        if (cmd.equals(gui.getSaveAsMenuItem())) {
+            String file = FileHandler.getSaveAsAbsoluteFilePath();
+            if (file.endsWith(Strings.TXT_EXT)) {
+                FileHandler.saveMatrixToFile(gui.caseMatrixToIntMatrix(), file);
+            } else {
+                JOptionPane.showConfirmDialog(gui, Strings.NO_TXT_MESSAGE + Strings.SAVE_ERR, Strings.NO_TXT_TITLE, JOptionPane.DEFAULT_OPTION);
+            }
+        }
+        if (cmd.equals(gui.getLoadMenuItem())) {
+            String file = FileHandler.getAbsoluteFilePath();
+            if (file.endsWith(Strings.TXT_EXT)) {
+                gui.loadMatrix(FileHandler.getMatrixFromFile(file));
+            } else {
+                JOptionPane.showConfirmDialog(gui, Strings.NO_TXT_MESSAGE + Strings.LOAD_ERR, Strings.NO_TXT_TITLE, JOptionPane.DEFAULT_OPTION);
+            }
         }
         // display the popup dialog that requests new dimensions
         if (cmd.equals(gui.getChangeMatrixSizeMenuItem())) {

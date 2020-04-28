@@ -27,6 +27,8 @@ public class Gui extends JPanel {
     private boolean hasEndPoint;
     private boolean hasPath;
     private JMenuItem helpMenuItem;
+    private JMenuItem saveAsMenuItem;
+    private JMenuItem loadMenuItem;
     private Case[][] matrix;
     private JRadioButtonMenuItem bfsRadioMenuItem;
     private JCheckBoxMenuItem useDiag;
@@ -116,6 +118,15 @@ public class Gui extends JPanel {
     private void initMenu() {
         // Menu bar
         menuBar = new JMenuBar();
+        // File Menu
+        JMenu fileMenu = new JMenu(Strings.FILE);
+        saveAsMenuItem = new JMenuItem(Strings.SAVE_AS);
+        saveAsMenuItem.addActionListener(controller);
+        loadMenuItem = new JMenuItem(Strings.LOAD);
+        loadMenuItem.addActionListener(controller);
+        fileMenu.add(saveAsMenuItem);
+        fileMenu.add(loadMenuItem);
+        // More menu
         JMenu moreMenu = new JMenu(Strings.MORE);
         helpMenuItem = new JMenuItem(Strings.HELP);
         helpMenuItem.addActionListener(controller);
@@ -141,6 +152,8 @@ public class Gui extends JPanel {
         settingsMenu.add(useDiag);
         settingsMenu.addSeparator();
         settingsMenu.add(changeMatrixSizeMenuItem);
+
+        menuBar.add(fileMenu);
         menuBar.add(settingsMenu);
         // menuBar.add(Box.createGlue());
         menuBar.add(moreMenu);
@@ -188,6 +201,38 @@ public class Gui extends JPanel {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 matrix[i][j] = new Case(this, i, j, Constants.EMPTY);
+                matrix[i][j].addMouseListener(new MouseController(this, i, j));
+                matrixGridPanel.add(matrix[i][j]);
+            }
+        }
+        parent.pack();
+    }
+
+    /**
+     * Load a new pre-defined matrix to the grid panel
+     *
+     * @param newMatrix New matrix that you want to load
+     */
+    public void loadMatrix(int[][] newMatrix) {
+        resetBool();
+        matrixGridPanel.removeAll();
+        matrixGridPanel.setLayout(new GridLayout(newMatrix.length, newMatrix[0].length));
+        matrix = new Case[newMatrix.length][newMatrix[0].length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                int value = newMatrix[i][j];
+                matrix[i][j] = new Case(this, i, j, value);
+                if (value == Constants.START) {
+                    matrix[i][j].setBackgroundColor(Colors.START_COLOR);
+                    hasStartingPoint = true;
+                }
+                if (value == Constants.END) {
+                    matrix[i][j].setBackgroundColor(Colors.END_COLOR);
+                    hasEndPoint = true;
+                }
+                if (value == Constants.OBSTACLE) {
+                    matrix[i][j].setBackgroundColor(Colors.OBSTACLE_COLOR);
+                }
                 matrix[i][j].addMouseListener(new MouseController(this, i, j));
                 matrixGridPanel.add(matrix[i][j]);
             }
@@ -418,5 +463,23 @@ public class Gui extends JPanel {
      */
     public JMenuItem getHelpMenuItem() {
         return helpMenuItem;
+    }
+
+    /**
+     * Get the "Save as" menu item
+     *
+     * @return "Save as" menu item
+     */
+    public JMenuItem getSaveAsMenuItem() {
+        return saveAsMenuItem;
+    }
+
+    /**
+     * Get the "Load" menu item
+     *
+     * @return "Load" menu item
+     */
+    public JMenuItem getLoadMenuItem() {
+        return loadMenuItem;
     }
 }
