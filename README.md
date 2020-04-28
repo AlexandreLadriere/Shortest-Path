@@ -39,6 +39,13 @@ $ sh make.sh clean
 $ sh make.sh help
 ```
 
+## Screenshots
+<div align="center">
+<img alt="without_path.png" src="screenshots/without_path.png" width="404" height="474" /> 
+<img alt="with_path.png" src="screenshots/with_path.png" width="404" height="474" /> 
+<img alt="matrix_size.png" src="screenshots/matrix_size.png" width="404" height="274" /> 
+</div>
+
 ## License
 This project is licensed under the MIT License - see the [LICENSE] file for details.
 
