@@ -8,6 +8,7 @@ import java.util.Random;
 
 /**
  * Implement the Prim's algorithm to generate a maze
+ * see: https://stackoverflow.com/a/29758926/13247140
  */
 public final class Prims {
     private static final Random rand = new Random();
@@ -36,11 +37,11 @@ public final class Prims {
                 Cell randNeighbor = neighborsList.get(randNeighborIndex);
                 // Connect the frontier cell with the neighbor by setting the cell in-between to state Empty
                 connectCells(randFrontier, randNeighbor);
-                // Compute the frontier cells of the chosen frontier cell and add them to the frontier list.
-                addFrontiers(randFrontier);
             }
-
+            // Compute the frontier cells of the chosen frontier cell and add them to the frontier list.
+            addFrontiers(randFrontier);
             // Remove the chosen frontier cell from the list of frontier cells.
+            randFrontier.setValue(Constants.EMPTY);
             frontiersList.remove(randFrontier);
         }
         return cellGridToIntGrid(maze);
@@ -116,19 +117,27 @@ public final class Prims {
     private static void addFrontiers(Cell cell) {
         // NORTH
         if (isValidFrontier(cell.getX() - 2, cell.getY())) {
-            frontiersList.add(maze[cell.getX() - 2][cell.getY()]);
+            if (!frontiersList.contains(maze[cell.getX() - 2][cell.getY()])) {
+                frontiersList.add(maze[cell.getX() - 2][cell.getY()]);
+            }
         }
         // WEST
         if (isValidFrontier(cell.getX(), cell.getY() - 2)) {
-            frontiersList.add(maze[cell.getX()][cell.getY() - 2]);
+            if (!frontiersList.contains(maze[cell.getX()][cell.getY() - 2])) {
+                frontiersList.add(maze[cell.getX()][cell.getY() - 2]);
+            }
         }
         // SOUTH
         if (isValidFrontier(cell.getX() + 2, cell.getY())) {
-            frontiersList.add(maze[cell.getX() + 2][cell.getY()]);
+            if (!frontiersList.contains(maze[cell.getX() + 2][cell.getY()])) {
+                frontiersList.add(maze[cell.getX() + 2][cell.getY()]);
+            }
         }
         // EAST
         if (isValidFrontier(cell.getX(), cell.getY() + 2)) {
-            frontiersList.add(maze[cell.getX()][cell.getY() + 2]);
+            if (!frontiersList.contains(maze[cell.getX()][cell.getY() + 2])) {
+                frontiersList.add(maze[cell.getX()][cell.getY() + 2]);
+            }
         }
     }
 
