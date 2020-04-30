@@ -33,6 +33,7 @@ public class Gui extends JPanel {
     private Case[][] matrix;
     private JRadioButtonMenuItem bfsRadioMenuItem;
     private JRadioButtonMenuItem mazePrimRadioMenuItem;
+    private JRadioButtonMenuItem mazeDFSRadioMenuItem;
     private JCheckBoxMenuItem useDiag;
     private JMenuBar menuBar;
     private JMenuItem changeMatrixSizeMenuItem;
@@ -156,8 +157,11 @@ public class Gui extends JPanel {
         ButtonGroup mazeBgMenu = new ButtonGroup();
         mazePrimRadioMenuItem = new JRadioButtonMenuItem(Strings.ALGO_RAND_PRIM);
         mazePrimRadioMenuItem.setSelected(true);
+        mazeDFSRadioMenuItem = new JRadioButtonMenuItem(Strings.ALGO_DFS);
         mazeBgMenu.add(mazePrimRadioMenuItem);
+        mazeBgMenu.add(mazeDFSRadioMenuItem);
         mazeAlgoSubMenu.add(mazePrimRadioMenuItem);
+        mazeAlgoSubMenu.add(mazeDFSRadioMenuItem);
         // useDiag menu check box
         useDiag = new JCheckBoxMenuItem(Strings.USE_DIAG);
         useDiag.setSelected(false);
@@ -465,6 +469,15 @@ public class Gui extends JPanel {
      */
     public JRadioButtonMenuItem getMazePrimRadioMenuItem() {
         return mazePrimRadioMenuItem;
+    }
+
+    /**
+     * get the DFS algorithm RadioMenuItem
+     *
+     * @return DFS algorithm RadioMenuItem
+     */
+    public JRadioButtonMenuItem getMazeDFSRadioMenuItem() {
+        return mazeDFSRadioMenuItem;
     }
 
     /**

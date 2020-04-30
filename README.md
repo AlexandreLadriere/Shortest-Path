@@ -9,6 +9,7 @@ For the moment, only the following algorithms have been implemented:
   - [Breadth-first Search algorithm] (BFS), with and without the possibility to move in diagonals.
 - Generate a maze:
   - [Randomized Prim's algorithm]
+  - [Depth-first Search algorithm] (DFS)
 
 ## How to use
 You can compile and run this app by yourself, OR you can use my [make.sh] script:
@@ -70,3 +71,4 @@ If you find any bugs/issues, raise an issue.
   [make.sh]: <make.sh>
   [Breadth-first Search algorithm]: <https://en.wikipedia.org/wiki/Breadth-first_search>
   [Randomized Prim's algorithm]: <https://en.wikipedia.org/wiki/Maze_generation_algorithm#Randomized_Prim's_algorithm>
+  [Depth-first Search algorithm]: <https://en.wikipedia.org/wiki/Maze_generation_algorithm#Depth-first_search>
