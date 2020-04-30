@@ -1,5 +1,6 @@
 package main.java.fr.alexandreladriere.shortestpath.gui;
 
+import main.java.fr.alexandreladriere.maze.prims.Prims;
 import main.java.fr.alexandreladriere.shortestpath.filehandler.FileHandler;
 import main.java.fr.alexandreladriere.shortestpath.models.bfs.BreadthFirstSearch;
 import main.java.fr.alexandreladriere.shortestpath.utils.Strings;
@@ -38,6 +39,13 @@ public class Controller implements ActionListener {
                 gui.setHasPath(true);
                 gui.drawPath(path);
                 gui.getPathInfo().setText("Path length = " + path.size() + "    |    Calculation time = " + duration + " ms");
+            }
+        }
+        // Generate a maze according to the select algorithm
+        if (cmd.equals(gui.getGenerateMazeButton())) {
+            if (gui.getMazePrimRadioMenuItem().isSelected()) {
+                int[][] maze = Prims.generateMaze(gui.getMatrix().length, gui.getMatrix()[0].length);
+                gui.loadMatrix(maze);
             }
         }
         // reset the matrix/grid
