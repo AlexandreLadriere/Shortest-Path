@@ -41,11 +41,16 @@ public class Controller implements ActionListener {
                 gui.getPathInfo().setText("Path length = " + path.size() + "    |    Calculation time = " + duration + " ms");
             }
         }
+        // Generate a maze according to the select algorithm
+        if (cmd.equals(gui.getGenerateMazeButton())) {
+            if (gui.getMazePrimRadioMenuItem().isSelected()) {
+                int[][] maze = Prims.generateMaze(gui.getMatrix().length, gui.getMatrix()[0].length);
+                gui.loadMatrix(maze);
+            }
+        }
         // reset the matrix/grid
         if (cmd.equals(gui.getResetButton())) {
-            //gui.resetMatrix();
-            int[][] maze = Prims.generateMaze(gui.getMatrix().length, gui.getMatrix()[0].length);
-            gui.loadMatrix(maze);
+            gui.resetMatrix();
         }
         if (cmd.equals(gui.getSaveAsMenuItem())) {
             String file = FileHandler.getSaveAsAbsoluteFilePath();

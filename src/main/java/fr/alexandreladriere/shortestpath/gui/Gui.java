@@ -17,6 +17,7 @@ public class Gui extends JPanel {
     private final JRadioButton obstacleRadio;
     private final JButton resetButton;
     private final JButton findPathButton;
+    private final JButton generateMazeButton;
     private final JLabel pathInfo;
     private final Controller controller;
     private final JFrame parent;
@@ -31,6 +32,7 @@ public class Gui extends JPanel {
     private JMenuItem loadMenuItem;
     private Case[][] matrix;
     private JRadioButtonMenuItem bfsRadioMenuItem;
+    private JRadioButtonMenuItem mazePrimRadioMenuItem;
     private JCheckBoxMenuItem useDiag;
     private JMenuBar menuBar;
     private JMenuItem changeMatrixSizeMenuItem;
@@ -99,12 +101,21 @@ public class Gui extends JPanel {
         resetButton.setBorderPainted(false);
         resetButton.setBackground(Colors.END_COLOR);
         resetButton.setForeground(Colors.TEXT_COLOR);
+        resetButton.setPreferredSize(new Dimension(140, 25));
         findPathButton = new JButton(Strings.FIND);
         findPathButton.addActionListener(controller);
         findPathButton.setBorderPainted(false);
         findPathButton.setBackground(Colors.START_COLOR);
         findPathButton.setForeground(Colors.TEXT_COLOR);
+        findPathButton.setPreferredSize(new Dimension(140, 25));
+        generateMazeButton = new JButton(Strings.GENERATE_MAZE);
+        generateMazeButton.addActionListener(controller);
+        generateMazeButton.setBorderPainted(false);
+        generateMazeButton.setBackground(Colors.DEFAULT_COLOR);
+        generateMazeButton.setForeground(Colors.TEXT_COLOR);
+        generateMazeButton.setPreferredSize(new Dimension(140, 25));
         subCenterPanel.add(resetButton);
+        subCenterPanel.add(generateMazeButton);
         subCenterPanel.add(findPathButton);
         southPanel.add(pathInfo, BorderLayout.NORTH);
         southPanel.add(subCenterPanel, BorderLayout.CENTER);
@@ -140,6 +151,13 @@ public class Gui extends JPanel {
         bfsRadioMenuItem.setSelected(true);
         bgMenu.add(bfsRadioMenuItem);
         algoSubMenu.add(bfsRadioMenuItem);
+        // Maze algorithms sub menu
+        JMenu mazeAlgoSubMenu = new JMenu(Strings.MAZE_ALGO);
+        ButtonGroup mazeBgMenu = new ButtonGroup();
+        mazePrimRadioMenuItem = new JRadioButtonMenuItem(Strings.ALGO_RAND_PRIM);
+        mazePrimRadioMenuItem.setSelected(true);
+        mazeBgMenu.add(mazePrimRadioMenuItem);
+        mazeAlgoSubMenu.add(mazePrimRadioMenuItem);
         // useDiag menu check box
         useDiag = new JCheckBoxMenuItem(Strings.USE_DIAG);
         useDiag.setSelected(false);
@@ -148,6 +166,8 @@ public class Gui extends JPanel {
         changeMatrixSizeMenuItem.addActionListener(controller);
         // Adding to menu
         settingsMenu.add(algoSubMenu);
+        settingsMenu.addSeparator();
+        settingsMenu.add(mazeAlgoSubMenu);
         settingsMenu.addSeparator();
         settingsMenu.add(useDiag);
         settingsMenu.addSeparator();
@@ -439,6 +459,15 @@ public class Gui extends JPanel {
     }
 
     /**
+     * Get the Randomized Prim's algorithm RadioMenuItem
+     *
+     * @return Randomized Prim's algorithm RadioMenuItem
+     */
+    public JRadioButtonMenuItem getMazePrimRadioMenuItem() {
+        return mazePrimRadioMenuItem;
+    }
+
+    /**
      * Get the JMenuItem corresponding to the "change matrix size" setting
      *
      * @return JMenuItem corresponding to the "change matrix size" setting
@@ -481,5 +510,14 @@ public class Gui extends JPanel {
      */
     public JMenuItem getLoadMenuItem() {
         return loadMenuItem;
+    }
+
+    /**
+     * Get the "Generate maze" button
+     *
+     * @return The "Generate maze" button
+     */
+    public JButton getGenerateMazeButton() {
+        return generateMazeButton;
     }
 }

@@ -1,10 +1,14 @@
 # Shortest-Path (WIP)
 [![GitHub license](https://img.shields.io/github/license/AlexandreLadriere/Shortest-Path.svg)](https://github.com/AlexandreLadriere/Shortest-Path/blob/master/LICENSE)
 
-This project aims to implement some algorithms for finding the shortest path between a starting point and an end point in a matrix with obstacles, and to illustrate the solutions through a graphical interface.
+This project aims to implement some algorithms for finding the shortest path between a starting point and an end point in a matrix with obstacles, and to illustrate the solutions through a graphical interface. You can select where to place the starting point and the end point, as well as the obstacles.
+It also implements some algorithms to generate a maze.
 
 For the moment, only the following algorithms have been implemented:
-- [Breadth-first Search] (BFS), with and without the possibility to move in diagonals.
+- Find the shortest path:
+  - [Breadth-first Search algorithm] (BFS), with and without the possibility to move in diagonals.
+- Generate a maze:
+  - [Randomized Prim's algorithm]
 
 ## How to use
 You can compile and run this app by yourself, OR you can use my [make.sh] script:
@@ -43,6 +47,7 @@ $ sh make.sh help
 <div align="center">
 <img alt="without_path.png" src="screenshots/without_path.png" width="404" height="474" /> 
 <img alt="with_path.png" src="screenshots/with_path.png" width="404" height="474" /> 
+<img alt="maze_with_path.png" src="screenshots/maze_with_path.png" width="404" height="474" /> 
 <img alt="matrix_size.png" src="screenshots/matrix_size.png" width="404" height="274" /> 
 </div>
 
@@ -63,4 +68,5 @@ If you find any bugs/issues, raise an issue.
 
   [LICENSE]: <LICENSE>
   [make.sh]: <make.sh>
-  [Breadth-first Search]: <https://en.wikipedia.org/wiki/Breadth-first_search>
+  [Breadth-first Search algorithm]: <https://en.wikipedia.org/wiki/Breadth-first_search>
+  [Randomized Prim's algorithm]: <https://en.wikipedia.org/wiki/Maze_generation_algorithm#Randomized_Prim's_algorithm>
