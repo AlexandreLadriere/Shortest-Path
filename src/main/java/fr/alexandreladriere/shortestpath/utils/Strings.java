@@ -17,6 +17,7 @@ public final class Strings {
     public static final String ALGO = "Shortest Path Algorithms";
     public static final String MAZE_ALGO = "Maze Algorithms";
     public static final String ALGO_BFS = "Breadth-first Search (BFS)";
+    public static final String ALGO_DFS = "Depth-first Search (DFS)";
     public static final String ALGO_RAND_PRIM = "Randomized Prim's Algorithm";
     public static final String CHANGE_SIZE = "Change matrix size";
     public static final String ROW_NUMBER = "Number of rows ";

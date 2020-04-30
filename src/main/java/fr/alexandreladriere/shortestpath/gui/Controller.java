@@ -1,5 +1,6 @@
 package main.java.fr.alexandreladriere.shortestpath.gui;
 
+import main.java.fr.alexandreladriere.maze.dfs.DepthFirstSearch;
 import main.java.fr.alexandreladriere.maze.prims.Prims;
 import main.java.fr.alexandreladriere.shortestpath.filehandler.FileHandler;
 import main.java.fr.alexandreladriere.shortestpath.models.bfs.BreadthFirstSearch;
@@ -43,8 +44,14 @@ public class Controller implements ActionListener {
         }
         // Generate a maze according to the select algorithm
         if (cmd.equals(gui.getGenerateMazeButton())) {
+            // Randomized Prim's algorithm
             if (gui.getMazePrimRadioMenuItem().isSelected()) {
                 int[][] maze = Prims.generateMaze(gui.getMatrix().length, gui.getMatrix()[0].length);
+                gui.loadMatrix(maze);
+            }
+            // DFS algorithm
+            if (gui.getMazeDFSRadioMenuItem().isSelected()) {
+                int[][] maze = DepthFirstSearch.generateMaze(gui.getMatrix().length, gui.getMatrix()[0].length);
                 gui.loadMatrix(maze);
             }
         }
