@@ -1,6 +1,6 @@
 package main.java.fr.alexandreladriere.maze.dfs;
 
-import main.java.fr.alexandreladriere.shortestpath.utils.Constants;
+import main.java.fr.alexandreladriere.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.Collections;

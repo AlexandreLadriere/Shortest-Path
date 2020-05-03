@@ -3,7 +3,7 @@ package test.java.fr.alexandreladriere.shortestpath;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
-import test.java.fr.alexandreladriere.shortestpath.models.bfs.BreadthFirstSearchTest;
+import test.java.fr.alexandreladriere.shortestpath.bfs.BreadthFirstSearchTest;
 
 /**
  * Test runner

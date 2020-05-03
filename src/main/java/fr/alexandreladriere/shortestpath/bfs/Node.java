@@ -1,11 +1,12 @@
-package main.java.fr.alexandreladriere.shortestpath.models.bfs;
+package main.java.fr.alexandreladriere.shortestpath.bfs;
 
 /**
  * Implement a Node (i.e. a cell in the matrix
  */
 public class Node {
-    private int x, y; // coordinates of the node in the matrix
-    private Node parent; // Parent of the node
+    private final int x;
+    private final int y; // coordinates of the node in the matrix
+    private final Node parent; // Parent of the node
 
     /**
      * Default constructor

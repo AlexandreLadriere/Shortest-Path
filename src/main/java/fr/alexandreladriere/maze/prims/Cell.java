@@ -1,6 +1,6 @@
 package main.java.fr.alexandreladriere.maze.prims;
 
-import main.java.fr.alexandreladriere.shortestpath.utils.Constants;
+import main.java.fr.alexandreladriere.utils.Constants;
 
 /**
  * Implement a Cell object for the maze

@@ -1,7 +1,7 @@
-package test.java.fr.alexandreladriere.shortestpath.models.bfs;
+package test.java.fr.alexandreladriere.shortestpath.bfs;
 
-import main.java.fr.alexandreladriere.shortestpath.models.bfs.BreadthFirstSearch;
-import main.java.fr.alexandreladriere.shortestpath.utils.Constants;
+import main.java.fr.alexandreladriere.shortestpath.bfs.BreadthFirstSearch;
+import main.java.fr.alexandreladriere.utils.Constants;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;

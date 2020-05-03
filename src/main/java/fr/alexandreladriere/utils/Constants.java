@@ -1,4 +1,4 @@
-package main.java.fr.alexandreladriere.shortestpath.utils;
+package main.java.fr.alexandreladriere.utils;
 
 /**
  * Implement constants

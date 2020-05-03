@@ -1,7 +1,7 @@
-package main.java.fr.alexandreladriere.shortestpath.filehandler;
+package main.java.fr.alexandreladriere.filehandler;
 
-import main.java.fr.alexandreladriere.shortestpath.utils.Constants;
-import main.java.fr.alexandreladriere.shortestpath.utils.Strings;
+import main.java.fr.alexandreladriere.utils.Constants;
+import main.java.fr.alexandreladriere.utils.Strings;
 
 import java.awt.*;
 import java.io.BufferedReader;

@@ -1,8 +1,8 @@
-package main.java.fr.alexandreladriere.shortestpath.gui;
+package main.java.fr.alexandreladriere.gui;
 
-import main.java.fr.alexandreladriere.shortestpath.utils.Colors;
-import main.java.fr.alexandreladriere.shortestpath.utils.Constants;
-import main.java.fr.alexandreladriere.shortestpath.utils.Strings;
+import main.java.fr.alexandreladriere.utils.Colors;
+import main.java.fr.alexandreladriere.utils.Constants;
+import main.java.fr.alexandreladriere.utils.Strings;
 
 import javax.swing.*;
 import java.awt.*;

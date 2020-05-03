@@ -1,10 +1,10 @@
-package main.java.fr.alexandreladriere.shortestpath.gui;
+package main.java.fr.alexandreladriere.gui;
 
+import main.java.fr.alexandreladriere.filehandler.FileHandler;
 import main.java.fr.alexandreladriere.maze.dfs.DepthFirstSearch;
 import main.java.fr.alexandreladriere.maze.prims.Prims;
-import main.java.fr.alexandreladriere.shortestpath.filehandler.FileHandler;
-import main.java.fr.alexandreladriere.shortestpath.models.bfs.BreadthFirstSearch;
-import main.java.fr.alexandreladriere.shortestpath.utils.Strings;
+import main.java.fr.alexandreladriere.shortestpath.bfs.BreadthFirstSearch;
+import main.java.fr.alexandreladriere.utils.Strings;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

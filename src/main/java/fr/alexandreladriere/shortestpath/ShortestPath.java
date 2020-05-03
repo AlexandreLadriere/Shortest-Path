@@ -1,7 +1,7 @@
 package main.java.fr.alexandreladriere.shortestpath;
 
-import main.java.fr.alexandreladriere.shortestpath.gui.Gui;
-import main.java.fr.alexandreladriere.shortestpath.utils.Strings;
+import main.java.fr.alexandreladriere.gui.Gui;
+import main.java.fr.alexandreladriere.utils.Strings;
 
 import javax.swing.*;
 
